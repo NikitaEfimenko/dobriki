@@ -14,3 +14,14 @@ export function calcDistance(lat1: number, lon1: number, lat2: number, lon2: num
 
   return diam * Math.asin(Math.sqrt(a));
 }
+
+export const handleAccelerometerReading = (x: number, y: number, z:number, handler: (value: any) => void) => {
+  const threshold = 10;
+  if (
+    Math.abs(x) > threshold ||
+    Math.abs(y) > threshold ||
+    Math.abs(z) > threshold
+  ) {
+    handler((prevCount: number) => prevCount + 1);
+  }
+};
