@@ -1,0 +1,55 @@
+version: "3.10"
+
+services:
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+  app: &django_conf
+    build:
+      context: ./app
+    command: python manage.py runserver 0.0.0.0:80
+    platform: linux/x86_64
+    depends_on:
+      - redis
+    environment: &django_env
+      ALLOWED_HOSTS: "*"
+      BROKER_URI: "redis://redis:6379/0"
+
+      DB_URI: postgresql://postgres:Hgiop13rot@@db.utlnolxqnjbcugdobvpu.supabase.co:5432/postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Hgiop13rot@
+      
+      DEBUG: 1
+      DISABLE_USER_METRICS: 1
+      DOMAIN: "localhost:3000"
+      REDIS_URI: "redis://redis:6379/1"
+
+      OAUTH2_ID_HOST: "https://id-stage.samoletgroup.ru"
+
+      SOCIAL_AUTH_SAMOLET_KEY: "PGLE09hd8xCyIU8V2BQMN42TwwkTvyvB8NdjWks2"
+      SOCIAL_AUTH_SAMOLET_SECRET: "HEETCoQC3H68JumvchqFS0PkrtTPn0m3yr2Vt0csqLj7ICzSMRamS1hdl3xkdasKocq2PsRS80Mdkb7TzJWZGcUSrfrq9CZUvlvqWmDNvzpqmtZrl76phMnIfhsRK7JE"
+
+    volumes:
+      - ./app:/app
+      - ./files:/files
+    ports:
+      - "8000:80"
+
+  celery:
+    <<: *django_conf
+    command: celery -A scontracts worker -E -l DEBUG -Q celery,doc_constructor
+    ports: [ ]
+
+  celery_beat:
+    <<: *django_conf
+    command: celery -A scontracts beat -l DEBUG --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    ports: [ ]
+
+ 
+volumes:
+  redis: { }
