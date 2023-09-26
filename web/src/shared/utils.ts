@@ -25,3 +25,63 @@ export const handleAccelerometerReading = (x: number, y: number, z:number, handl
     handler((prevCount: number) => prevCount + 1);
   }
 };
+
+export function calculateSteps(
+  latitude1: number,
+  longitude1: number,
+  altitude1: number,
+  latitude2: number,
+  longitude2: number,
+  altitude2: number
+): number {
+  // Радиус Земли в метрах (примерное значение)
+  const earthRadius = 6371000;
+
+  // Рассчитываем горизонтальное расстояние между двумя точками в метрах
+  const horizontalDistance = calculateHorizontalDistance(
+    latitude1,
+    longitude1,
+    altitude1,
+    latitude2,
+    longitude2,
+    altitude2,
+    earthRadius
+  );
+
+  // Предполагаемая длина шага в метрах
+  const stepLength = 1; // 1 метр
+
+  // Рассчитываем количество шагов
+  const steps = horizontalDistance / stepLength;
+
+  return steps;
+}
+
+// Функция для расчета горизонтального расстояния между двумя точками
+function calculateHorizontalDistance(
+  lat1: number,
+  lon1: number,
+  alt1: number,
+  lat2: number,
+  lon2: number,
+  alt2: number,
+  radius: number
+): number {
+  const phi1 = (lat1 * Math.PI) / 180;
+  const phi2 = (lat2 * Math.PI) / 180;
+
+  const deltaPhi = ((lat2 - lat1) * Math.PI) / 180;
+  const deltaLambda = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
+    Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const verticalDistance = Math.abs(alt2 - alt1); // вертикальное расстояние
+
+  // Горизонтальное расстояние с учетом вертикального перемещения
+  const horizontalDistance = Math.sqrt(c * c * radius * radius + verticalDistance * verticalDistance);
+
+  return horizontalDistance;
+}
