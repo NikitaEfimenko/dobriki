@@ -33,7 +33,11 @@ const MotionComp = () => {
     <ul>
       <li>
         motion: {JSON.stringify(motion)}
+      </li>
+      <li>
         step-count {stepCount}
+      </li>
+      <li> 
         error - {error}
       </li>
       <li>
