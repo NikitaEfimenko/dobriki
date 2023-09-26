@@ -37,7 +37,7 @@ const Position = () => {
       const [lat2, lon2, alt2] = [coord?.latitude, coord?.longitude, coord?.altitude]
       return count + calculateSteps(lat1 ?? 0, lon1 ?? 0, alt1 ?? 0, lat2 ?? 0, lon2 ?? 0, alt2 ?? 0)
     })
-  }, [coordinates])
+  }, [coordinates, previous])
 
   return <div className='text-sm'>
     <ul>
