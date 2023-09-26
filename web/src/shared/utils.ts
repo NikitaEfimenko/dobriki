@@ -81,7 +81,8 @@ function calculateHorizontalDistance(
   const verticalDistance = Math.abs(alt2 - alt1); // вертикальное расстояние
 
   // Горизонтальное расстояние с учетом вертикального перемещения
-  const horizontalDistance = Math.sqrt(c * c * radius * radius + verticalDistance * verticalDistance);
+  // const horizontalDistance = Math.sqrt(c * c * radius * radius + verticalDistance * verticalDistance);
+  const horizontalDistance = Math.sqrt(c * c * radius * radius);
 
   return horizontalDistance;
 }

@@ -20,7 +20,7 @@ const Position = () => {
   const { data } = useQuery({
       queryKey: ["position"],
       queryFn: getCurrentPosition,
-      refetchInterval: 300,
+      refetchInterval: 500,
       onSuccess: (data) => {
         setCoordinates(data)
       }
