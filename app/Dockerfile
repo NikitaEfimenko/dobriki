@@ -10,10 +10,9 @@ RUN apt-get update && \
     python -m pip install poetry && \
     poetry config virtualenvs.create false && \
     rm -rf /var/lib/apt/lists/* && rm -rf /etc/apk/cache
-# COPY pyproject.toml poetry.lock ./
-# RUN python -m pip install --upgrade pip && poetry install --no-root
+COPY pyproject.toml poetry.lock ./
+RUN python -m pip install --upgrade pip && poetry install --no-root
 COPY . /app/
 
-# RUN mkdir -p /app/static && python manage.py collectstatic --noinput
 EXPOSE 80
-# CMD /usr/local/bin/gunicorn --threads 4 --chdir /app scontracts.wsgi:application -b :80
+CMD /usr/local/bin/gunicorn --threads 4 --chdir /app dobriki.wsgi:application -b :80

@@ -1,3 +1,10 @@
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+ 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
 export function calcDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
   var deg2rad = Math.PI / 180;
   lat1 *= deg2rad;

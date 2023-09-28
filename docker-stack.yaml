@@ -1,6 +1,7 @@
 version: "3.10"
 
 services:
+
   redis:
     image: redis:6.2-alpine
     ports:
@@ -19,11 +20,13 @@ services:
       ALLOWED_HOSTS: "*"
       BROKER_URI: "redis://redis:6379/0"
 
-      DB_URI: postgresql://postgres:Hgiop13rot@@db.utlnolxqnjbcugdobvpu.supabase.co:5432/postgres
+      POSTGRES_HOST: db.utlnolxqnjbcugdobvpu.supabase.co
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Hgiop13rot@
+      POSTGRES_PASSWORD: jklol13qwe@
+      POSTGRES_PORT: 5432
       
+
       DEBUG: 1
       DISABLE_USER_METRICS: 1
       DOMAIN: "localhost:3000"
@@ -40,6 +43,8 @@ services:
     ports:
       - "8000:80"
 
+
+
   celery:
     <<: *django_conf
     command: celery -A scontracts worker -E -l DEBUG -Q celery,doc_constructor
@@ -50,6 +55,70 @@ services:
     command: celery -A scontracts beat -l DEBUG --scheduler django_celery_beat.schedulers:DatabaseScheduler
     ports: [ ]
 
- 
+  search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: search
+    environment:
+      cluster.name: fusionauth
+      bootstrap.memory_lock: "true"
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    healthcheck:
+      test: [ "CMD", "curl",  "--fail" ,"--write-out", "'HTTP %{http_code}'", "--silent", "--output", "/dev/null", "http://localhost:9200/" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - search_net
+    restart: unless-stopped
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - search_data:/usr/share/elasticsearch/data
+
+  fusionauth:
+      image: fusionauth/fusionauth-app:latest
+      depends_on:
+        search:
+          condition: service_healthy
+      environment:
+        <<: *django_env
+        DATABASE_URL: jdbc:postgresql://db.utlnolxqnjbcugdobvpu.supabase.co:5432/postgres?user=postgres&password=jklol13qwe@
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: jklol13qwe@
+        
+        FUSIONAUTH_APP_RUNTIME_MODE: development
+        FUSIONAUTH_APP_MEMORY: 512M
+        SEARCH_SERVERS: http://search:9200
+        SEARCH_TYPE: elasticsearch
+      
+      networks:
+        - search_net
+        - mailcatcher_net
+      restart: unless-stopped
+      ports:
+        - 9011:9011
+      volumes:
+        - fusionauth_config:/usr/local/fusionauth/config
+
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+    networks:
+      - mailcatcher_net
+
+networks:
+  search_net:
+    driver: bridge
+  mailcatcher_net:
+    driver: bridge
+
 volumes:
-  redis: { }
+  fusionauth_config:
+  search_data:
+  redis: {}

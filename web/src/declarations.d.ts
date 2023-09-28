@@ -6,13 +6,19 @@ const envVariables = z.object({
   NEXTAUTH_SECRET: z.string(),
   NEXTAUTH_BACKEND_URL: z.url(),
   NEXT_PUBLIC_BACKEND_URL: z.url(),
-  PUBLIC_URL: z.url()
+  PUBLIC_URL: z.url(),
+  NEXT_BACKEND_URL: z.url(),
+
+  FUSIONAUTH_ISSUER: z.url(),
+  FUSIONAUTH_CLIENT_ID: z.string(),
+  FUSIONAUTH_CLIENT_SECRET: z.string(),
+  FUSIONAUTH_TENANT_ID: z.string(),
+  FUSIONAUTH_URL: z.string()
 })
 
 declare global {
   namespace NodeJS {
-    interface ProcessEnv extends z.infer<typeof envVariables> {
-    }
+    interface ProcessEnv extends z.infer<typeof envVariables> {}
   }
 
   interface Window {
@@ -59,4 +65,4 @@ declare global {
   }
 }
 
-export {};
+export { };
