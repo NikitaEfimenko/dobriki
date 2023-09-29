@@ -1,8 +1,6 @@
 import * as React from "react";
 
-import { cn, nullable } from "@/shared/utils";
-import { IconChevronRight } from "@/icons/chevron-right";
-import { routes } from "../routes";
+import { cn } from "@/shared/utils";
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -10,7 +8,7 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("shadow-sm p-4 pb-6 bg-card rounded-3xl", className)}
+    className={cn("shadow p-4 pb-6 bg-card rounded-3xl", className)}
     {...props}
   />
 ));

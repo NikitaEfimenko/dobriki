@@ -77,3 +77,7 @@
     @apply bg-background text-sm text-primary;
   }
 }
+
+.shadow {
+  box-shadow: 0px 0px 76px 0px rgba(0, 0, 0, 0.45);
+}
