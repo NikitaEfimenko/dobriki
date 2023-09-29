@@ -1,9 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, generics, status
+from rest_framework import viewsets
 from rest_framework.filters import OrderingFilter, SearchFilter
-from rest_framework.response import Response
-
-from feed.services.filters_service import get_all_filters
 from feed.utils.filters import ArticleFilter, TagsFilter
 from feed.mixins.like_mixin import LikedMixin
 from feed.models import Article, ArticleCategory
@@ -40,8 +37,3 @@ class ArticleViewSet(LikedMixin, viewsets.ModelViewSet):
             return ArticlePreviewSerializer
         else:
             return ArticleSerializer
-
-
-class FiltersAPIView(generics.GenericAPIView):
-    def get(self, request):
-        return Response(status=status.HTTP_200_OK, data=get_all_filters())

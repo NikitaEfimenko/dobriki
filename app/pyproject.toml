@@ -72,6 +72,8 @@ django-etc = "^1.4.0"
 fusionauth-client = "^1.47.0"
 Authlib = "^1.2.0"
 mozilla-django-oidc = "^2.0.0"
+django-mdeditor = "^0.1.20"
+markdown = "^3.4.4"
 
 
 [build-system]
