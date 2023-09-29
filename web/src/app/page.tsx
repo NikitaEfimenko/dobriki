@@ -14,7 +14,7 @@ const Routemap = dynamic(() =>
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 flex gap-16 flex-col max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+      <div className="z-10 flex gap-16 flex-col w-full items-center justify-between text-sm lg:flex">
         <MotionStats />
         <ChallengesCarousel />
       </div>

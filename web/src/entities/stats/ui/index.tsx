@@ -2,22 +2,6 @@ import { Label } from "@/shared/ui/label";
 import { CircularProgress } from "@nextui-org/react";
 import { CheckCheckIcon, CheckIcon } from "lucide-react";
 
-type HeroProps = {
-  title: string;
-  subtitle: string;
-  description: string;
-};
-
-export const Hero = (props: HeroProps) => {
-  return (
-    <div className="flex gap-1 flex-col">
-      <div className="text-2xl">{props.subtitle}</div>
-      <h1 className="text-primary text-4xl font-bold">{props.title}</h1>
-      <div className="text-lg">{props.description}</div>
-    </div>
-  );
-};
-
 type DaylyProgressProps = {
   day: string;
   percent: number;
