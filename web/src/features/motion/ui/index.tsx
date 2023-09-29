@@ -4,8 +4,7 @@ import { PluginListenerHandle } from '@capacitor/core';
 import { Motion } from '@capacitor/motion';
 import { useEffect } from 'react';
 import type { AccelListenerEvent } from '@capacitor/motion';
-import { handleAccelerometerReading } from '@/shared/utils';
-
+import { handleAccelerometerReading } from '../helpers/utils';
 
 const MotionComp = () => {
   const [motion, setMotion] = useState<AccelListenerEvent>()

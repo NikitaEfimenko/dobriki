@@ -47,12 +47,12 @@ services:
 
   celery:
     <<: *django_conf
-    command: celery -A scontracts worker -E -l DEBUG -Q celery,doc_constructor
+    command: celery -A dobriki worker -E -l DEBUG -Q celery,doc_constructor
     ports: [ ]
 
   celery_beat:
     <<: *django_conf
-    command: celery -A scontracts beat -l DEBUG --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    command: celery -A dobriki beat -l DEBUG --scheduler django_celery_beat.schedulers:DatabaseScheduler
     ports: [ ]
 
   search:

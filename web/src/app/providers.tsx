@@ -2,6 +2,7 @@
 import { useState, ReactNode, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@material-tailwind/react";
 
 // import { register, unregister } from "../config/serviceWorkerRegistration"
 
@@ -18,6 +19,7 @@ export default function Providers({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider>
+
         {children}
       </SessionProvider>
     </QueryClientProvider>
