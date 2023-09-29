@@ -4,13 +4,14 @@ import * as React from "react";
 import { cn } from "../utils";
 import { Avatar } from "@nextui-org/react";
 import { Skeleton } from "./skeleton";
-// import { Avatar, AvatarFallback } from "./avatar";
 
 interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   selected?: boolean;
 
+  renderTitle?: () => React.ReactNode;
+  renderDescription?: () => React.ReactNode;
   renderImage?: (selected?: boolean) => React.ReactNode;
 }
 
@@ -19,6 +20,8 @@ export const ListItem: React.FC<ListItemProps> = ({
   description,
   selected,
   className,
+  renderTitle,
+  renderDescription,
   renderImage = (selected?: boolean) => (
     <Avatar
       showFallback
@@ -38,8 +41,10 @@ export const ListItem: React.FC<ListItemProps> = ({
     <div className={cn("flex gap-3", className)} {...attrs}>
       {renderImage(selected)}
       <div className="flex flex-col">
-        <div>{title}</div>
-        <div className="text-secondary text-xs">{description}</div>
+        {renderTitle ? renderTitle() : title}
+        <div className="text-secondary text-xs">
+          {renderDescription ? renderDescription() : description}
+        </div>
       </div>
     </div>
   );

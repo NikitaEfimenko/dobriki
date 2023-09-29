@@ -3,12 +3,13 @@
 import { WeeklyStats } from "@/entities/stats";
 import { useWalkActivity } from "@/features/motion/helpers/hooks";
 import { PageHeader } from "@/features/pageHeader";
+import { Card } from "@/shared/ui/card";
 
 export const MotionStats = () => {
   const { activities } = useWalkActivity();
 
   return (
-    <div className="flex gap-8 flex-col">
+    <Card className="flex gap-8 flex-col rounded-t-none">
       <PageHeader
         top="Вы сделали"
         middle={`${activities.stepCount.toFixed(0)} шагов`}
@@ -17,6 +18,6 @@ export const MotionStats = () => {
         ).toFixed(0)} ккал)`}
       />
       <WeeklyStats />
-    </div>
+    </Card>
   );
 };

@@ -1,53 +1,66 @@
-'use client'
+"use client";
 
-import { Button } from "@/shared/ui/button"
-import { Progress } from "@/shared/ui/progress"
-import type { ChallengeCardProps } from "@/entities/challenge/types"
+import { Button } from "@/shared/ui/button";
+import { Progress } from "@/shared/ui/progress";
+import type { ChallengeItemProps } from "@/entities/challenge/types";
+import { nullable } from "@/shared/utils";
 
-const actionSlot = <Button variant="default" className="w-full">Участвовать</Button>
-const stepsSlot = <div className="inline-flex items-center gap-1">
-  <span className="text-primary text-lg">120 000 шагов</span>
-  <span className="text-primary-muted text-sm">до 31 октября</span>
-</div>
+const renderDescription = ({
+  description,
+  preDescription,
+}: {
+  description: string;
+  preDescription?: string;
+}) => {
+  return (
+    <div className="flex items-baseline gap-[6px]">
+      <div className="text-base text-accent">{description}</div>
+      {nullable(preDescription, (preDesc) => (
+        <div className="text-items">{preDesc}</div>
+      ))}
+    </div>
+  );
+};
 
-const progressSlot = <div>
-  <div  className="inline-flex items-center gap-1">
-    <span className="text-primary">120 000 шагов</span>
-    <span className="text-primary-muted text-sm">до 31 октября</span>
-  </div>
-  <Progress value={43}/>
-</div>
-const progressDoneSlot = <div>
-  <div  className="inline-flex items-center gap-1">
-    <span className="text-primary">100%</span>
-    <span className="text-primary-muted text-sm">от цели челденджа</span>
-  </div>
-  <Progress value={100}/>
-</div>
-
-const progressStepSlot = <span className="text-primary text-lg">120 000 шагов</span>
-const challengeDone = <span className="text-primary text-lg">Челлендж пройден</span>
-
-const labelSlot = "Челленджи"
-const titleSlot = "Октябрь 2023"
-
+const title = "Октябрь 2023";
 export const carouselConfig = [
   {
-    label: labelSlot,
-    title: titleSlot,
-    description: stepsSlot,
-    actionSlot: actionSlot
+    title,
+    renderTrigger: () => (
+      <Button className="w-full h-[34px] bg-accent text-black">
+        Участвовать
+      </Button>
+    ),
+    renderDescription: () =>
+      renderDescription({
+        description: "120 000 шагов",
+        preDescription: "до 31 октября",
+      }),
   },
   {
-    label: labelSlot,
-    title: titleSlot,
-    description: progressStepSlot,
-    extSlot: progressSlot
+    title,
+    renderTrigger: () => (
+      <div className="flex flex-col gap-2">
+        <div>9% от цели челенджа</div>
+        <Progress value={9} />
+      </div>
+    ),
+    renderDescription: () =>
+      renderDescription({
+        description: "9 238 из 120 000 шагов",
+      }),
   },
   {
-    label: labelSlot,
-    title: titleSlot,
-    description: challengeDone,
-    extSlot: progressDoneSlot
+    title,
+    renderTrigger: () => (
+      <div className="flex flex-col gap-2">
+        <div>100% от цели челенджа</div>
+        <Progress value={100} />
+      </div>
+    ),
+    renderDescription: () =>
+      renderDescription({
+        description: "Челлендж пройден",
+      }),
   },
-] satisfies Array<ChallengeCardProps>
+] satisfies Array<ChallengeItemProps>;

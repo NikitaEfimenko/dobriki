@@ -1,4 +1,4 @@
-import { ListCard } from "@/entity/listCard";
+import { ListCard } from "@/entities/listCard";
 import { organizations } from "@/features/listItems/config";
 import { ListItem } from "@/shared/ui/list-item";
 import * as React from "react";

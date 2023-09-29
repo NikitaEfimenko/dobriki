@@ -1,4 +1,3 @@
-import { Card } from "@/shared/ui/card";
 import { cn, nullable } from "@/shared/utils";
 import * as React from "react";
 
@@ -16,9 +15,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   ...attrs
 }) => {
   return (
-    <Card
+    <div
       className={cn("flex flex-col gap-1 font-extrabold", className)}
-      shadow={false}
       {...attrs}
     >
       {nullable(top, (string) => (
@@ -30,6 +28,6 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       {nullable(end, (string) => (
         <div className="text-[20px] font-bold leading-[130%]">{string}</div>
       ))}
-    </Card>
+    </div>
   );
 };

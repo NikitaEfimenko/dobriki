@@ -7,7 +7,7 @@ type DaylyProgressProps = {
   percent: number;
 };
 
-const DaylyProgress = (props: DaylyProgressProps) => {
+const DailyProgress = (props: DaylyProgressProps) => {
   const { percent, day } = props;
   return (
     <div className="flex flex-col gap-1 items-center">
@@ -17,8 +17,8 @@ const DaylyProgress = (props: DaylyProgressProps) => {
       <div className="relative">
         <CircularProgress
           classNames={{
-            svg: "w-10 h-10 drop-shadow-md",
-            indicator: "stroke-primary stroke-[6px]",
+            svg: "w-9 h-9 drop-shadow-md",
+            indicator: "stroke-accent stroke-[2px]",
             track: "stroke-white/10",
             value: "text-3xl font-semibold text-white",
           }}
@@ -29,7 +29,7 @@ const DaylyProgress = (props: DaylyProgressProps) => {
         {percent >= 100 ? (
           <CheckIcon
             size={14}
-            className="absolute translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%]"
+            className="absolute translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%] stroke-accent"
           />
         ) : null}
       </div>
@@ -70,9 +70,9 @@ const weekleyConfig = [
 
 export const WeeklyStats = () => {
   return (
-    <div className="flex gap-4 items-center justify-start">
+    <div className="flex items-center justify-between">
       {weekleyConfig.map((config) => (
-        <DaylyProgress
+        <DailyProgress
           key={config.day}
           day={config.day}
           percent={config.percent}

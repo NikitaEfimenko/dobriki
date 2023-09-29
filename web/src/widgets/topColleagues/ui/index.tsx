@@ -1,4 +1,4 @@
-import { ListCard } from "@/entity/listCard";
+import { ListCard } from "@/entities/listCard";
 import { topColleagues } from "@/features/listItems/config";
 import { ListItem } from "@/shared/ui/list-item";
 import { Avatar } from "@nextui-org/react";
@@ -12,7 +12,7 @@ export const TopColleagues: React.FC<TopColleaguesProps> = ({
 }) => {
   return (
     <ListCard
-      items={topColleagues}
+      items={topColleagues.slice(5)}
       renderItem={({ id, title, description }) => (
         <ListItem
           key={id}
