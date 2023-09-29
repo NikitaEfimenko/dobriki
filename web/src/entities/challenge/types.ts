@@ -2,6 +2,6 @@ import { ReactNode } from "react";
 
 export type ChallengeItemProps = {
   title: string;
-  renderTrigger?: () => ReactNode;
+  renderTrigger?: (value?: number) => ReactNode;
   renderDescription?: () => ReactNode;
 };

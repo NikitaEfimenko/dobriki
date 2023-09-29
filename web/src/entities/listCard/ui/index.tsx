@@ -8,7 +8,9 @@ interface ListCardProps<T> extends React.HTMLAttributes<HTMLDivElement> {
   route?: React.ComponentProps<typeof CardHeader>["route"];
 
   items: T[];
-  renderItem: (props: T) => React.ReactNode;
+  renderItem?: (props: T) => React.ReactNode;
+  renderItems?: (items: T[]) => React.ReactNode;
+  renderTrigger?: () => React.ReactNode;
 }
 
 export function ListCard<T>({
@@ -16,12 +18,18 @@ export function ListCard<T>({
   route,
   items,
   renderItem,
+  renderItems,
+  renderTrigger,
   ...attrs
 }: ListCardProps<T>) {
   return (
     <Card {...attrs} className="flex flex-col gap-5">
-      <CardHeader title={title} route={route} />
-      <ListItems items={items} renderItem={renderItem} />
+      <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
+      <ListItems
+        items={items}
+        renderItem={renderItem}
+        renderItems={renderItems}
+      />
     </Card>
   );
 }

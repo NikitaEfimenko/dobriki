@@ -12,10 +12,7 @@ export default function TopColleaguesPage() {
   const router = useRouter();
   return (
     <Card shadow={false} className="flex flex-col gap-8">
-      <div className="flex flex-col gap-2">
-        <IconBack onClick={router.home} />
-        <PageHeader top="Топ коллег" />
-      </div>
+      <PageHeader top="Топ коллег" onClick={router.home} />
       <ListItems
         items={topColleagues}
         renderItem={({ id, title, description }) => (

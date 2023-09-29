@@ -5,9 +5,8 @@ import {
   ThemeProvider,
 } from "@material-tailwind/react";
 
-import { Card } from "@/shared/ui/card";
 import { Circle } from "lucide-react";
-import { ReactElement, ReactNode } from "react";
+import { ReactNode } from "react";
 
 const theme = {
   carousel: {
@@ -18,12 +17,10 @@ const theme = {
             {Array.from({ length }).map((_, idx) => (
               <Circle
                 key={idx}
-                fill={
-                  idx === activeIndex ? "text-muted-primary" : "text-secondary"
-                }
+                fill={idx === activeIndex ? "text-accent" : "text-secondary"}
                 size={6}
                 className={
-                  idx === activeIndex ? "text-muted-primary" : "text-secondary"
+                  idx === activeIndex ? "text-accent" : "text-secondary"
                 }
                 onClick={() => setActiveIndex(idx)}
               />
