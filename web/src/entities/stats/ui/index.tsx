@@ -1,6 +1,5 @@
-import { Label } from "@/shared/ui/label";
 import { CircularProgress } from "@nextui-org/react";
-import { CheckCheckIcon, CheckIcon } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 
 type DaylyProgressProps = {
   day: string;
@@ -11,9 +10,7 @@ const DailyProgress = (props: DaylyProgressProps) => {
   const { percent, day } = props;
   return (
     <div className="flex flex-col gap-1 items-center">
-      <Label className="text-xs" htmlFor={day}>
-        {day}
-      </Label>
+      <div className="text-xs">{day}</div>
       <div className="relative">
         <CircularProgress
           classNames={{
@@ -25,6 +22,7 @@ const DailyProgress = (props: DaylyProgressProps) => {
           value={percent}
           showValueLabel={false}
           id={props.day}
+          label
         />
         {percent >= 100 ? (
           <CheckIcon
