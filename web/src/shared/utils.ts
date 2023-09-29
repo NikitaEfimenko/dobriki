@@ -1,11 +1,16 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
- 
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function calcDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+export function calcDistance(
+  lat1: number,
+  lon1: number,
+  lat2: number,
+  lon2: number
+) {
   var deg2rad = Math.PI / 180;
   lat1 *= deg2rad;
   lon1 *= deg2rad;
@@ -14,15 +19,21 @@ export function calcDistance(lat1: number, lon1: number, lat2: number, lon2: num
   var diam = 12742; // Diameter of the earth in km (2 * 6371)
   var dLat = lat2 - lat1;
   var dLon = lon2 - lon1;
-  var a = (
-    (1 - Math.cos(dLat)) +
-    (1 - Math.cos(dLon)) * Math.cos(lat1) * Math.cos(lat2)
-  ) / 2;
+  var a =
+    (1 -
+      Math.cos(dLat) +
+      (1 - Math.cos(dLon)) * Math.cos(lat1) * Math.cos(lat2)) /
+    2;
 
   return diam * Math.asin(Math.sqrt(a));
 }
 
-export const handleAccelerometerReading = (x: number, y: number, z:number, handler: (value: any) => void) => {
+export const handleAccelerometerReading = (
+  x: number,
+  y: number,
+  z: number,
+  handler: (value: any) => void
+) => {
   const threshold = 10;
   if (
     Math.abs(x) > threshold ||
@@ -82,14 +93,28 @@ function calculateHorizontalDistance(
 
   const a =
     Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
-    Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+    Math.cos(phi1) *
+      Math.cos(phi2) *
+      Math.sin(deltaLambda / 2) *
+      Math.sin(deltaLambda / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
   const verticalDistance = Math.abs(alt2 - alt1); // вертикальное расстояние
 
   // Горизонтальное расстояние с учетом вертикального перемещения
   // const horizontalDistance = Math.sqrt(c * c * radius * radius + verticalDistance * verticalDistance);
-  const horizontalDistance = Math.sqrt(c * c * radius * radius + verticalDistance * verticalDistance);
+  const horizontalDistance = Math.sqrt(
+    c * c * radius * radius + verticalDistance * verticalDistance
+  );
 
   return horizontalDistance;
+}
+
+export function nullable<V>(
+  v: V,
+  render: (v: NonNullable<V>) => React.ReactNode
+): React.ReactNode {
+  if (!v) return null;
+  if (Array.isArray(v) && !v.length) return null;
+  return render(v);
 }

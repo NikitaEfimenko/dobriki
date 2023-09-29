@@ -1,10 +1,7 @@
-import { ReactNode } from "react"
+import { ReactNode } from "react";
 
-export type ChallengeCardProps = {
-  label: string | ReactNode,
-  avatar?: string,
-  title: string | ReactNode,
-  description: string | ReactNode,
-  extSlot?: ReactNode,
-  actionSlot?: ReactNode
-}
+export type ChallengeItemProps = {
+  title: string;
+  renderTrigger?: () => ReactNode;
+  renderDescription?: () => ReactNode;
+};

@@ -2,15 +2,15 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './entities/**/*.{ts,tsx}',
-    './processes/**/*.{ts,tsx}',
-    './widgets/**/*.{ts,tsx}',
-    './shared/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    "../node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
-    "../node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}"
-	],
+    "./entities/**/*.{ts,tsx}",
+    "./processes/**/*.{ts,tsx}",
+    "./widgets/**/*.{ts,tsx}",
+    "./shared/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
+    "node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -54,6 +54,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        items: {
+          DEFAULT: "hsl(var(--items))",
+          active: "hsl(var(--items-active))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -77,4 +81,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
