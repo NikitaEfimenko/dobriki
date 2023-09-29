@@ -65,7 +65,19 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4",
-    "zod": "^3.22.2"
+    "zod": "^3.22.2",
+    "@material-tailwind/react": "^2.1.2",
+		"@nextui-org/react": "^2.1.13",
+		"@radix-ui/primitive": "^1.0.1",
+		"@radix-ui/react-compose-refs": "^1.0.1",
+		"@radix-ui/react-context": "^1.0.1",
+		"@radix-ui/react-use-callback-ref": "^1.0.1",
+		"@types/lodash.debounce": "^4.0.7",
+		"@types/smoothscroll-polyfill": "^0.3.1",
+		"ably": "^1.2.45",
+		"lodash.debounce": "^4.0.8",
+		"primitive": "link:types/@radix-ui/primitive",
+		"smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
