@@ -4,6 +4,7 @@ from django.shortcuts import render
 from json import loads
 from math import ceil
 from django.shortcuts import render, redirect
+from django.contrib.auth import logout as django_logout
 from django.http import HttpResponse
 from django.conf import settings
 
