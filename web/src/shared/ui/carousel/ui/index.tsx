@@ -26,11 +26,11 @@ export const Carousel = ({ list }: { list: Array<ReactNode> }) => {
     <Card>
       <div className="relative">
         <CarouselBase autoplay className="max-w-lg roundex-xl" prevArrow={() => null} nextArrow={() => null} loop>
-          {list && list.length > 0 && list.map((el, idx) => <div key={idx} className="pb-6">
+          {list && list.length > 0 && list.map((el, idx) => <div key={idx} className="pb-6 relative">
             {el}
           </div>)}
         </CarouselBase>
-      </div >
+      </div>
     </Card>
   </ThemeProvider>
 }
