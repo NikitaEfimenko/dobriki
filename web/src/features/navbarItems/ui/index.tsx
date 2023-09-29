@@ -4,8 +4,9 @@ import * as React from "react";
 import { IconHeart, IconHome, IconTrendUp, IconUser } from "@/icons";
 import { NavbarItem } from "@/shared/ui/navbar-item";
 import { cn } from "@/shared/utils";
-import { routes, useRouter } from "@/shared/routes";
+import { useRouter } from "@/shared/hooks";
 import { usePathname } from "next/navigation";
+import { routes } from "@/shared/routes";
 
 interface NavbarItemsProps extends React.HTMLAttributes<HTMLDivElement> {}
 

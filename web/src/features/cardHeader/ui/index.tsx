@@ -1,8 +1,9 @@
 import * as React from "react";
 import { CardHeader as Header } from "@/shared/ui/card";
-import { routes, useRouter } from "@/shared/routes";
+import { useRouter } from "@/shared/hooks";
 import { cn, nullable } from "@/shared/utils";
 import { IconChevronRight } from "@/icons/chevron-right";
+import { routes } from "@/shared/routes";
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
