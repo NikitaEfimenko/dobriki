@@ -26,7 +26,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
         {renderTrigger?.()}
       </div>
       {nullable(route, (r) => (
-        <div onClick={router[r]}>
+        <div onClick={router[r]} className="rounded-md bg-items">
           <IconChevronRight />
         </div>
       ))}

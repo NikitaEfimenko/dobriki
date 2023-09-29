@@ -3,7 +3,6 @@
 import { ListItems } from "@/features/listItems";
 import { topColleagues } from "@/features/listItems/config";
 import { PageHeader } from "@/features/pageHeader";
-import { IconBack } from "@/icons/back";
 import { useRouter } from "@/shared/hooks";
 import { Card } from "@/shared/ui/card";
 import { ListItem } from "@/shared/ui/list-item";
