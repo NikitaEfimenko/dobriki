@@ -1,27 +1,32 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+
 import * as Ably from "ably/promises";
-import { env } from '~/env.mjs';
 import { getServerSession } from 'next-auth';
 
+import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest, NextResponse } from "next/server";
+import { authOptions } from "@/config/auth-config";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
+async function handler(
+  req: NextRequest,
+  res: NextResponse
 ) {
 
   if (!process.env.ABLY_API_KEY) {
-    return res
-            .status(500)
-            .setHeader("content-type", "application/json")
-            .json({
-              errorMessage: "Missing ABLY_API_KEY environment variable"
-            })
-    }
-  const session = await getServerSession(req, res, {})
+    return new NextResponse(JSON.stringify({
+        errorMessage: "Missing ABLY_API_KEY environment variable"
+      }), {
+        status: 500
+      })
+  }
+  const session = await getServerSession(authOptions)
 
   const clientId = session?.user?.email || "GUEST_TOKEN";
-  const client = new Ably.Rest(env.ABLY_API_KEY);
+  const client = new Ably.Rest(process.env.ABLY_API_KEY);
   const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
 
-  return res.status(200).json(tokenRequestData)
+  return new NextResponse(JSON.stringify(tokenRequestData), {
+    status: 200
+  })
 }
+
+export { handler as POST, handler as PUT, handler as PATCH}

@@ -78,6 +78,6 @@ const weekleyConfig = [
 
 export const WeeklyStats = () => {
   return <div className="flex gap-4 items-center justify-start">
-    {weekleyConfig.map(config => <DaylyProgress day={config.day} percent={config.percent}/>)}
+    {weekleyConfig.map(config => <DaylyProgress key={config.day} day={config.day} percent={config.percent}/>)}
   </div>
 }
