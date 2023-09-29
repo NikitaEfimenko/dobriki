@@ -27,6 +27,9 @@ export default async function RootLayout({
         <body className={cn("pb-16", inter.className)}>
           {children}
           <Navbar />
+          <div className="h-[100vh] w-[100vw] bg-black fixed top-0 left-0 z-[99999] overflow-hidden device-hidden">
+            сорямба ток мобильная версия
+          </div>
         </body>
       </Providers>
     </html>

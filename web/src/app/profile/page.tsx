@@ -26,7 +26,7 @@ const AwardItem: React.FC<AwardItemProps> = ({
       <Card shadow={false} className="p-3 relative bg-items rounded-xl">
         <div className={cn(percent < 100 ? "award-hidden" : "")}>{icon}</div>
         <CircleProgress
-          className="absolute bottom-2 right-0"
+          className="absolute bottom-2 right-2"
           percent={percent}
           size="s"
         />

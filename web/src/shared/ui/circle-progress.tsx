@@ -11,12 +11,12 @@ interface CircleProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 const sizes = {
   s: {
     height: "h-6",
-    width: "h-6",
+    width: "w-6",
     iconSize: 12,
   },
   m: {
     height: "h-9",
-    width: "h-9",
+    width: "w-9",
     iconSize: 14,
   },
 };
@@ -30,11 +30,11 @@ export const CircleProgress: React.FC<CircleProgressProps> = ({
   const id = React.useId();
   const { height, width, iconSize } = sizes[size];
   return (
-    <div className={cn("relative", className, height)} {...attrs}>
+    <div className={cn("relative", className, height, width)} {...attrs}>
       <CircularProgress
         classNames={{
           svg: cn("drop-shadow-md", height, width),
-          indicator: "stroke-accent stroke-[2px]",
+          indicator: "stroke-accent stroke-[3px]",
           track: "stroke-white/10",
           value: "text-3xl font-semibold text-white",
         }}
