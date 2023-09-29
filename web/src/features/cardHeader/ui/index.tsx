@@ -6,7 +6,7 @@ import { IconChevronRight } from "@/icons/chevron-right";
 import { routes } from "@/shared/routes";
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
+  title?: string;
   route?: keyof typeof routes;
   renderTrigger?: () => React.ReactNode;
 }
@@ -22,7 +22,9 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   return (
     <Header className={cn(className)} {...attrs}>
       <div className="flex gap-2">
-        <div className="font-semibold">{title}</div>
+        {nullable(title, (t) => (
+          <div className="font-semibold">{t}</div>
+        ))}
         {renderTrigger?.()}
       </div>
       {nullable(route, (r) => (

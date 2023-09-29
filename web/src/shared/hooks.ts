@@ -26,5 +26,7 @@ export const useRouter = () => {
     organizations: () => router.push(routes.organizations()),
 
     profile: () => router.push(routes.profile()),
+
+    activity: () => router.push(routes.activity()),
   };
 };

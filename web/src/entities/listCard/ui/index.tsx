@@ -4,7 +4,7 @@ import { ListItems } from "@/features/listItems";
 import { Card } from "@/shared/ui/card";
 
 interface ListCardProps<T> extends React.HTMLAttributes<HTMLDivElement> {
-  title: React.ComponentProps<typeof CardHeader>["title"];
+  title?: React.ComponentProps<typeof CardHeader>["title"];
   route?: React.ComponentProps<typeof CardHeader>["route"];
 
   items: T[];

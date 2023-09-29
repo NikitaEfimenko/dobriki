@@ -9,4 +9,6 @@ export const routes = {
   organizations: () => "/digest/organizations/",
 
   profile: () => "/profile/",
+
+  activity: () => "/activity/",
 };
