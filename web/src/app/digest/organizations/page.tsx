@@ -12,7 +12,7 @@ export default function OrganizationsPage() {
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-8 rounded-t-none">
         <div className="flex flex-col gap-2">
-          <IconBack onClick={router.home} />
+          <IconBack onClick={router.digest} />
           <PageHeader top="Вы выбрали" middle="Дари добро" />
         </div>
         <div className="text-secondary">
