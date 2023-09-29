@@ -4,6 +4,9 @@ export const routes = {
   topColleagues: () => "/home/top-colleagues",
 
   statistics: () => "/statistics/",
+
   digest: () => "/digest/",
+  organizations: () => "/digest/organizations/",
+
   profile: () => "/profile/",
 };

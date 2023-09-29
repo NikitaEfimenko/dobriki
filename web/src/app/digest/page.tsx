@@ -18,6 +18,7 @@ export default function DigestPage() {
           <ListItem key={id} title={title} description={description} />
         )}
         title="Топ организаций"
+        route="organizations"
       />
     </div>
   );

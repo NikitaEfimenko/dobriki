@@ -21,7 +21,10 @@ export const useRouter = () => {
     topColleagues: () => router.push(routes.topColleagues()),
 
     statistics: () => router.push(routes.statistics()),
+
     digest: () => router.push(routes.digest()),
+    organizations: () => router.push(routes.organizations()),
+
     profile: () => router.push(routes.profile()),
   };
 };
