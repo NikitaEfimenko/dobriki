@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-PROJECT_APPS = ["progress"]
+PROJECT_APPS = ["progress", "feed"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "django_celery_beat",
     "django_json_widget",
+    "mdeditor"
 
     # "mozilla_django_oidc",
 ] + PROJECT_APPS
@@ -70,7 +71,10 @@ CELERY_BROKER_URL = os.environ.get("BROKER_URI")
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_RESULT_BACKEND = os.environ.get("BROKER_URI")
 CELERY_TASK_SERIALIZER = "json"
-
+# Celery Configuration Options
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
 
 MIDDLEWARE = [
@@ -108,16 +112,22 @@ WSGI_APPLICATION = 'dobriki.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('POSTGRES_DB'),
+#         'USER': os.environ.get('POSTGRES_USER'),
+#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#         'HOST': os.environ.get('POSTGRES_HOST'),
+#         'PORT': os.environ.get('POSTGRES_PORT'),
+#         'CONN_MAX_AGE': 600,
+#         'SSL_REQUIRE': True
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('POSTGRES_DB'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST'),
-        'PORT': os.environ.get('POSTGRES_PORT'),
-        'CONN_MAX_AGE': 600,
-        'SSL_REQUIRE': True
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 APPEND_SLASH = False
