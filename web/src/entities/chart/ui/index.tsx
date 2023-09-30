@@ -135,7 +135,7 @@ export const BarChart = () => {
           vertical={false}
         />
 
-        <Bar dataKey="amt" barSize={24} radius={6}>
+        <Bar dataKey="amt" barSize={28} radius={6}>
           {withMedian.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={getColor(entry.amt, median)} />
           ))}  
