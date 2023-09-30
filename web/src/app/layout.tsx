@@ -8,12 +8,10 @@ import { Toaster } from "@/shared/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 const APP_NAME = "Dobriki PWA";
 const APP_DEFAULT_TITLE = "Dobriki";
 const APP_TITLE_TEMPLATE = "%s - Dobriki-app";
 const APP_DESCRIPTION = "Dobriki are not Bobriki";
-
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -61,15 +59,15 @@ export default async function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <Providers>
-        <body className={cn("pb-16", inter.className)}>
+      <body className={cn("pb-16", inter.className)}>
+        <Providers>
           {children}
           <Toaster />
           <div className="h-[100vh] w-[100vw] bg-black fixed top-0 left-0 z-[99999] overflow-hidden device-hidden">
             сорямба ток мобильная версия
           </div>
-        </body>
-      </Providers>
+        </Providers>
+      </body>
     </html>
   );
 }
