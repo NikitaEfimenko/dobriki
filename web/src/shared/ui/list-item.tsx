@@ -5,7 +5,7 @@ import { cn } from "../utils";
 import { Avatar } from "@nextui-org/react";
 import { Skeleton } from "./skeleton";
 
-interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   description?: string;
   selected?: boolean;

@@ -40,7 +40,7 @@ export const Routemap = () => {
         [position?.coords.latitude ?? 0, position?.coords.longitude ?? 0]
       ])
     }
-  }, [position])
+  }, [position, guard])
 
   useEffect(() => {
     return () => {

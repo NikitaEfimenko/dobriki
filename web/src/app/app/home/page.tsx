@@ -34,7 +34,6 @@ export default function HomePage() {
         <Suspense fallback={<Spinner  size="lg"/>}>
           <TopColleaguesRealtime/>
         </Suspense>
-        <Routemap />
       </div>
 
     </main>

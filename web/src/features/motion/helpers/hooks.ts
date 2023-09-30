@@ -156,10 +156,10 @@ export const useActivity = (config: useActivityConfig = {
         updateStatus({...activityValues, isTracking: isTracking, type: newActivity })
       }
     ]
-  }, [])
+  }, [activityValues, isTracking, updateStatus])
 
   const calculatedActivity = useMemo(() => getActivity(currentActivity, distance ?? 0), [currentActivity, distance])
-
+  
   return {
     position: coordinates,
     activities: calculatedActivity,

@@ -1,6 +1,6 @@
 'use client'
 import { ActivityTypes, type Activity } from "@/features/motion/types"
-import type { ListItemProps } from "@/shared/ui/list-item"
+import { ListItemProps } from "@/shared/ui/list-item"
 import { Progress } from "@/shared/ui/progress"
 import { Badge } from "@nextui-org/react"
 import { Avatar } from "@nextui-org/react"

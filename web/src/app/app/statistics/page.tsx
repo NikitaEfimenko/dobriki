@@ -13,7 +13,13 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
-import { useState } from "react";
+import { Suspense, useState } from "react";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@nextui-org/react";
+
+const Routemap = dynamic(() =>
+  import("@/widgets/routemap").then((c) => ({ default: c.Routemap })), {ssr: false}
+);
 
 const periods = [
   { id: 1, title: "За день" },
@@ -33,7 +39,11 @@ export default function StatisticsPage() {
         </div>
       </Card>
       <Card>grafik</Card>
-      <Card>karta</Card>
+      <Card>
+      <Suspense fallback={<Skeleton></Skeleton>}>
+        <Routemap />
+      </Suspense>
+      </Card>
       <ListCard
         title="Топ 10 коллег"
         items={topColleagues}
