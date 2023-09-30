@@ -8,6 +8,7 @@ import { ListCard } from "@/entities/listCard";
 import { organizations } from "@/features/listItems/config";
 import { ListItem } from "@/shared/ui/list-item";
 import { useRouter } from "@/shared/hooks";
+import { FloatingButton } from "@/shared/ui/floating-button";
 
 export default function OrganizationFormPage() {
   const router = useRouter();
@@ -47,11 +48,7 @@ export default function OrganizationFormPage() {
             />
           )}
         />
-        <div className="fixed bottom-4 left-4 right-4 z-10">
-          <Button type="submit" className="w-full h-[52px] text-base">
-            Продолжить
-          </Button>
-        </div>
+        <FloatingButton type="submit">Продолжить</FloatingButton>
       </form>
     </div>
   );

@@ -16,6 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/shared/ui/button";
 import { useRouter } from "@/shared/hooks";
+import { FloatingButton } from "@/shared/ui/floating-button";
 
 const formSchema = z.object({
   weight: z.string().min(2, {
@@ -98,11 +99,7 @@ export default function PersonalFormPage() {
                 </FormItem>
               )}
             />
-            <div className="fixed bottom-4 left-4 right-4">
-              <Button type="submit" className="w-full h-[52px] text-base">
-                Продолжить
-              </Button>
-            </div>
+            <FloatingButton type="submit">Продолжить</FloatingButton>
           </form>
         </Form>
       </Card>
