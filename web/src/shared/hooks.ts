@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useRouter as NextRouter } from "next/navigation";
 import { routes } from "./routes";
+import { ActivityKeys } from "@/icons";
 
 export const usePrevious = <T>(value: T) => {
   const ref = useRef<T>();
@@ -40,3 +41,6 @@ export const useRouter = () => {
     organizationForm: () => router.push(routes.organizationForm()),
   };
 };
+
+/** USER_MODEL should include activity */
+const useActivity = (user: { activity?: ActivityKeys }) => {};

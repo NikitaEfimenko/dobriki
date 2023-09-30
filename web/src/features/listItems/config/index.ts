@@ -56,14 +56,49 @@ export const organizations = [
 ];
 
 export const topColleagues = [
-  { id: 1, title: "Кропотова Дарья", description: "123 000 шагов" },
-  { id: 2, title: "Цацына Ангелина", description: "110 000 шагов" },
-  { id: 3, title: "Ефименко Никита", description: "89 000 шагов" },
-  { id: 4, title: "Воропаев Денис", description: "81 000 шагов" },
-  { id: 5, title: "Алиев Ильхам", description: "23 000 шагов" },
-  { id: 6, title: "Воропаев Денис", description: "81 000 шагов" },
-  { id: 7, title: "Алиев Ильхам", description: "23 000 шагов" },
-  { id: 8, title: "Воропаев Денис", description: "81 000 шагов" },
-  { id: 9, title: "Алиев Ильхам", description: "23 000 шагов" },
-  { id: 10, title: "Воропаев Денис", description: "81 000 шагов" },
+  {
+    id: 1,
+    title: "Кропотова Дарья",
+    description: "123 000 шагов",
+    online: true,
+  },
+  {
+    id: 2,
+    title: "Цацына Ангелина",
+    description: "110 000 шагов",
+    online: true,
+  },
+  {
+    id: 3,
+    title: "Ефименко Никита",
+    description: "89 000 шагов",
+    online: false,
+  },
+  {
+    id: 4,
+    title: "Воропаев Денис",
+    description: "81 000 шагов",
+    online: false,
+  },
+  { id: 5, title: "Алиев Ильхам", description: "23 000 шагов", online: true },
+  {
+    id: 6,
+    title: "Воропаев Денис",
+    description: "81 000 шагов",
+    online: false,
+  },
+  { id: 7, title: "Алиев Ильхам", description: "23 000 шагов", online: false },
+  {
+    id: 8,
+    title: "Воропаев Денис",
+    description: "81 000 шагов",
+    online: false,
+  },
+  { id: 9, title: "Алиев Ильхам", description: "23 000 шагов", online: false },
+  {
+    id: 10,
+    title: "Воропаев Денис",
+    description: "81 000 шагов",
+    online: true,
+  },
 ];

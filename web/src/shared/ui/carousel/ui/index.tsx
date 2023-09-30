@@ -36,7 +36,8 @@ export const Carousel = ({ list }: { list: Array<ReactNode> }) => {
   return (
     <ThemeProvider value={theme}>
       <CarouselBase
-        // autoplay
+        autoplay
+        autoplayDelay={7_000}
         prevArrow={() => null}
         nextArrow={() => null}
         loop

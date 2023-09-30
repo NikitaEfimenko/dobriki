@@ -1,14 +1,13 @@
+"use client";
+
+import { ActivityProvider } from "@/shared/providers/activity";
 import { Navbar } from "@/widgets/navbar";
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ActivityProvider>
       {children}
       <Navbar />
-    </>
+    </ActivityProvider>
   );
 }

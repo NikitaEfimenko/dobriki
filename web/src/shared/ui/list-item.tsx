@@ -11,6 +11,7 @@ export interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   description?: string;
   selected?: boolean;
   src?: string;
+  children?: React.ReactNode;
 
   renderTitle?: (selected?: boolean) => React.ReactNode;
   renderDescription?: () => React.ReactNode;
@@ -33,6 +34,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   selected,
   className,
   src,
+  children,
   renderTitle,
   renderDescription,
   renderStatus,
@@ -54,27 +56,30 @@ export const ListItem: React.FC<ListItemProps> = ({
   ...attrs
 }) => {
   return (
-    <div className={cn("flex gap-3", className)} {...attrs}>
-      <div className="relative">
-        {renderImage({ selected, src })}
-        {nullable(selected, () => (
-          <CheckIcon
-            size={14}
-            className="absolute z-[99] translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%] stroke-accent"
-          />
-        ))}
+    <div className="flex items-center justify-between">
+      <div className={cn("flex gap-3", className)} {...attrs}>
+        <div className="relative">
+          {renderImage({ selected, src })}
+          {nullable(selected, () => (
+            <CheckIcon
+              size={14}
+              className="absolute z-[99] translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%] stroke-accent"
+            />
+          ))}
+        </div>
+        <div className={"flex flex-col"}>
+          <div className={cn(selected ? "text-accent" : "")}>
+            {renderTitle ? renderTitle(selected) : title}
+          </div>
+          <div className="text-secondary text-xs">
+            {renderDescription ? renderDescription() : description}
+          </div>
+          <div className="text-secondary text-xs">
+            {renderStatus ? renderStatus() : null}
+          </div>
+        </div>
       </div>
-      <div className={"flex flex-col"}>
-        <div className={cn(selected ? "text-accent" : "")}>
-          {renderTitle ? renderTitle(selected) : title}
-        </div>
-        <div className="text-secondary text-xs">
-          {renderDescription ? renderDescription() : description}
-        </div>
-        <div className="text-secondary text-xs">
-          {renderStatus ? renderStatus() : null}
-        </div>
-      </div>
+      {children}
     </div>
   );
 };

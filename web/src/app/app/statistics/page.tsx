@@ -6,7 +6,7 @@ import { PageHeader } from "@/features/pageHeader";
 import { Card } from "@/shared/ui/card";
 import { GoalProgress } from "@/shared/ui/goal-progress";
 import { ListItem } from "@/shared/ui/list-item";
-import { cn } from "@/shared/utils";
+import { cn, nullable } from "@/shared/utils";
 import { BarChart } from "@/entities/chart";
 import {
   Dropdown,
@@ -17,6 +17,7 @@ import {
 import { Suspense, useState } from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@nextui-org/react";
+import { OnlineBadge } from "@/shared/ui/online-badge";
 
 const Routemap = dynamic(
   () => import("@/widgets/routemap").then((c) => ({ default: c.Routemap })),
@@ -49,8 +50,12 @@ export default function StatisticsPage() {
       <ListCard
         title="Топ 10 коллег"
         items={topColleagues}
-        renderItem={({ id, title, description }) => (
-          <ListItem key={id} title={title} description={description} />
+        renderItem={({ id, title, description, online }) => (
+          <ListItem key={id} title={title} description={description}>
+            {nullable(online, () => (
+              <OnlineBadge />
+            ))}
+          </ListItem>
         )}
         renderTrigger={() => (
           <Dropdown className="bg-items rounded-xl">

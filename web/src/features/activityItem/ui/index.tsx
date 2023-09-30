@@ -7,11 +7,13 @@ interface ActivityItemProps extends React.HTMLAttributes<HTMLDivElement> {
   description: string;
   player?: boolean;
   activity?: ActivityKeys;
+  on?: boolean;
 }
 
 export const ActivityItem: React.FC<ActivityItemProps> = ({
   title,
   description,
+  on,
   player,
   activity,
   className,
@@ -19,9 +21,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({
 }) => {
   return (
     <div {...attrs} className={cn("flex flex-col gap-5", className)}>
-      {nullable(player, () => (
-        <IconPlayer />
-      ))}
+      {nullable(player, () => (on ? <div>pause</div> : <IconPlayer />))}
       <div className="flex flex-col gap-[2px]">
         <div className="font-semibold">{title}</div>
         <div className="text-[13px] text-white/80">{description}</div>

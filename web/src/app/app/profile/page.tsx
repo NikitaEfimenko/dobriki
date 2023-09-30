@@ -6,7 +6,7 @@ import { ListCard } from "@/entities/listCard";
 import { PageHeader } from "@/features/pageHeader";
 import { Card } from "@/shared/ui/card";
 import { animals, goals } from "@/icons/animals";
-import { AwardItem } from "@/features/awardItem";
+import { AwardItem } from "@/shared/ui/awardItem";
 import { Input } from "@/shared/ui/input";
 
 const defaultStepsValue = 10_000;

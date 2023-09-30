@@ -1,6 +1,6 @@
 import { Card } from "@/shared/ui/card";
 import { CircleProgress } from "@/shared/ui/circle-progress";
-import { cn } from "@/shared/utils";
+import { cn, nullable } from "@/shared/utils";
 import * as React from "react";
 
 type AwardItemProps = {
@@ -16,15 +16,18 @@ export const AwardItem: React.FC<AwardItemProps> = ({
   description,
   percent,
 }) => {
+  const done = percent >= 100;
   return (
     <div className="flex flex-col gap-2">
       <Card shadow={false} className="p-3 relative bg-items rounded-xl">
-        <div className={cn(percent < 100 ? "award-hidden" : "")}>{icon}</div>
-        <CircleProgress
-          className="absolute bottom-2 right-2"
-          percent={percent}
-          size="s"
-        />
+        <div className={cn(!done ? "award-hidden" : "")}>{icon}</div>
+        {nullable(!done, () => (
+          <CircleProgress
+            className="absolute bottom-2 right-2"
+            percent={percent}
+            size="s"
+          />
+        ))}
       </Card>
       <div className="text-center">
         <div className="font-semibold text-[11px] whitespace-nowrap">
