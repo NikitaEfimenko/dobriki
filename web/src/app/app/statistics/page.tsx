@@ -7,6 +7,7 @@ import { Card } from "@/shared/ui/card";
 import { GoalProgress } from "@/shared/ui/goal-progress";
 import { ListItem } from "@/shared/ui/list-item";
 import { cn } from "@/shared/utils";
+import { BarChart } from "@/entities/chart";
 import {
   Dropdown,
   DropdownItem,
@@ -38,7 +39,7 @@ export default function StatisticsPage() {
           <GoalProgress value={93} title="ежедневной цели" />
         </div>
       </Card>
-      <Card>grafik</Card>
+      <BarChart/>
 
       <Suspense fallback={<Skeleton></Skeleton>}>
         <Routemap />

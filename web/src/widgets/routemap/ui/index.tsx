@@ -11,6 +11,9 @@ import { CardHeader } from '@/features/cardHeader'
 
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
+import { configureAbly } from '@ably-labs/react-hooks'
+
+configureAbly({ authUrl: "/api/realtime" })
 
 const YMaps = dynamic(() => import("@pbe/react-yandex-maps").then(module => module.YMaps), { ssr: false })
 
