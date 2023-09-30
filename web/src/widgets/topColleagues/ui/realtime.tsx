@@ -8,6 +8,9 @@ import * as React from "react";
 
 import { useRealtimeStats } from "../helpers/hooks";
 import { listItemPropsBuilder } from "../config";
+import { configureAbly } from "@ably-labs/react-hooks";
+
+configureAbly({ authUrl: '/api/realtime'})
 
 interface TopColleaguesProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -23,7 +26,7 @@ export const TopColleaguesRealtime: React.FC<TopColleaguesProps> = ({
       items={members}
       renderItem={(member) => (
         <ListItem
-          key={member.clientId}
+          key={member.connectionId}
           {...listItemPropsBuilder({...member.data, clientId: member.clientId})}
         />
       )}

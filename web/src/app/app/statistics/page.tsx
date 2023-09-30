@@ -39,11 +39,11 @@ export default function StatisticsPage() {
         </div>
       </Card>
       <Card>grafik</Card>
-      <Card>
+
       <Suspense fallback={<Skeleton></Skeleton>}>
         <Routemap />
       </Suspense>
-      </Card>
+
       <ListCard
         title="Топ 10 коллег"
         items={topColleagues}
