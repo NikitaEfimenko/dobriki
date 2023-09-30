@@ -8,3 +8,4 @@ export * from "./home";
 export * from "./player";
 export * from "./trend-up";
 export * from "./user";
+export * from "./pause";

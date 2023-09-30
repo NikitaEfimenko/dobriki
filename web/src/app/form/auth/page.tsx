@@ -37,7 +37,7 @@ export default function AuthPage() {
 
   return (
     <div className="relative">
-      <Card className="flex flex-col gap-8 rounded-t-none" shadow={false}>
+      <Card className="flex flex-col gap-6 rounded-t-none" shadow={false}>
         <PageHeader top="Поделитесь почтой" />
         <div className="text-secondary">
           Если ваша есть в нашей базе, мы отправим вам на нее ссылку для входа

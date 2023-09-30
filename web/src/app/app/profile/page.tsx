@@ -41,7 +41,7 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Card className="flex flex-col gap-8 rounded-t-none">
+      <Card className="flex flex-col gap-6 rounded-t-none">
         <PageHeader
           top={`Цель ${defaultStepsValue} шагов`}
           middle="9 382 шага"

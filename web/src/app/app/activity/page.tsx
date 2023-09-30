@@ -64,7 +64,7 @@ export default function ActivityPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Card className="flex flex-col gap-8 rounded-t-none">
+      <Card className="flex flex-col gap-6 rounded-t-none">
         <PageHeader top="Активности" />
         <div className="text-secondary">
           За разные активности вам начисляется разное количество добриков

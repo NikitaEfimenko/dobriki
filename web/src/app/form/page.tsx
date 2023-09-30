@@ -10,7 +10,7 @@ export default function FormPage() {
   const router = useRouter();
   return (
     <div className="relative">
-      <Card className="flex flex-col gap-8 rounded-t-none" shadow={false}>
+      <Card className="flex flex-col gap-6 rounded-t-none" shadow={false}>
         <PageHeader top="Привет" />
         <div className="text-secondary">
           Это корпоративное приложение, где сотрудники “Кокос” могут

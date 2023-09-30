@@ -9,7 +9,7 @@ import { ListItem } from "@/shared/ui/list-item";
 export default function DigestPage() {
   return (
     <div className="flex flex-col gap-4">
-      <Card className="flex flex-col gap-8 rounded-t-none">
+      <Card className="flex flex-col gap-6 rounded-t-none">
         <PageHeader top="За месяц собрано" middle="92 345 добриков" />
       </Card>
       <ListCard

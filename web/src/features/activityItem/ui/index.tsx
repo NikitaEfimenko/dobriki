@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ActivityKeys, IconActivity, IconPlayer } from "@/icons";
+import { ActivityKeys, IconActivity, IconPause, IconPlayer } from "@/icons";
 import { cn, nullable } from "@/shared/utils";
 
 interface ActivityItemProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,7 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({
 }) => {
   return (
     <div {...attrs} className={cn("flex flex-col gap-5", className)}>
-      {nullable(player, () => (on ? <div>pause</div> : <IconPlayer />))}
+      {nullable(player, () => (on ? <IconPause /> : <IconPlayer />))}
       <div className="flex flex-col gap-[2px]">
         <div className="font-semibold">{title}</div>
         <div className="text-[13px] text-white/80">{description}</div>
