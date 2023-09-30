@@ -1,43 +1,32 @@
+// @ts-nocheck
 'use client'
-import 'leaflet/dist/leaflet.css'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/shared/ui/sheet"
-import {
-  Tabs,
-  TabsList,
-  TabsTrigger,
-} from "@/shared/ui/tabs"
-
-import { Button } from '@/shared/ui/button'
-
-
-
-import { useWalkActivity } from '@/features/motion/helpers/hooks'
-import { Progress } from '@/shared/ui/progress'
-
+import { useActivity } from '@/features/motion/helpers/hooks'
 import { useEffect, useState } from 'react'
-import { TabsContent } from '@radix-ui/react-tabs'
+
+import { ActivityTypes } from '@/features/motion/types'
+import { Map, Placemark, Polyline, Circle } from '@pbe/react-yandex-maps'
+import { Skeleton } from '@/shared/ui/skeleton'
+import { Card } from "@/shared/ui/card";
+import { CardHeader } from '@/features/cardHeader'
+
+import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
-import { BotIcon } from 'lucide-react'
-import { DivIcon } from 'leaflet'
 
-const MapContainer = dynamic(() => import("react-leaflet").then(c => ({ default: c.MapContainer })))
-const TileLayer = dynamic(() => import("react-leaflet").then(c => ({ default: c.TileLayer })))
-const Marker = dynamic(() => import("react-leaflet").then(c => ({ default: c.Marker })))
-const Popup = dynamic(() => import("react-leaflet").then(c => ({ default: c.Popup })))
-const Polyline = dynamic(() => import("react-leaflet").then(c => ({ default: c.Polyline })))
+const YMaps = dynamic(() => import("@pbe/react-yandex-maps").then(module => module.YMaps), { ssr: false })
 
+const skeleton = <Skeleton className='rounded-lg bg-accent-foreground'>
+  <div className='w-full h-[240px]'></div>
+</Skeleton>
 
 export const Routemap = () => {
   const [path, setPath] = useState<Array<[number, number]>>([])
   const [guard, setGuard] = useState(false)
-  const { position } = useWalkActivity()
+  const { position, actions } = useActivity({
+    autotrack: true,
+    activity: ActivityTypes.Walking
+  })
+  const [loading, setLoading] = useState(true)
+
   const [center, setCenter] = useState<[number, number] | null>(null)
 
   useEffect(() => {
@@ -53,33 +42,44 @@ export const Routemap = () => {
     }
   }, [position])
 
-  return <Sheet>
-    <SheetTrigger asChild>
+  useEffect(() => {
+    return () => {
+      actions.unsubscribe()
+    }
+  }, [actions])
 
-      <Button variant="outline">Open</Button>
-    </SheetTrigger>
-    <SheetContent side="bottom" className='md:max-w-2xl w-full'>
-
-      <SheetHeader>
-        <SheetTitle>Маршрут за сегодня</SheetTitle>
-        <SheetDescription>
-          Тут ты сегодня моложец иди соси конец
-        </SheetDescription>
-      </SheetHeader>
-
-          {center && <MapContainer className="w-full h-96" zoom={14} scrollWheelZoom={true} center={center}>
-            <TileLayer
-              attribution={'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}
-              url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"} />
-            <Marker position={center}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-            <Polyline pathOptions={{ color: 'purple' }} positions={path} />
-          </MapContainer>
-          }
-    </SheetContent>
-  </Sheet>
+  return <Card className="flex flex-col gap-5">
+    <CardHeader title="Маршруты на сегодня" />
+    <Suspense fallback={skeleton}>
+      {center ? <YMaps zoom={14} center={center}>
+        <div>
+          <Map defaultState={{ center: center, zoom: 16 }}>
+            <Placemark geometry={center} />
+            <Polyline
+              geometry={path}
+              options={{
+                balloonCloseButton: false,
+                strokeWidth: 4,
+                className: "text-primary",
+                strokeColor: "#8459FF29",
+                strokeOpacity: 0.5,
+              }}
+            />
+            <Circle
+              geometry={[center, 100]}
+              options={{
+                draggable: true,
+                className: "animate-ping",
+                fillColor: "#8459FF29",
+                strokeColor: "#8459FF29",
+                strokeOpacity: 0.8,
+                strokeWidth: 3,
+              }}
+            />
+          </Map>
+        </div>
+      </YMaps> : skeleton}
+    </Suspense>
+  </Card>
 
 }

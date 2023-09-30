@@ -12,6 +12,7 @@ interface ListItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
   renderTitle?: () => React.ReactNode;
   renderDescription?: () => React.ReactNode;
+  renderStatus?: () => React.ReactNode;
   renderImage?: (selected?: boolean) => React.ReactNode;
 }
 
@@ -22,6 +23,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   className,
   renderTitle,
   renderDescription,
+  renderStatus,
   renderImage = (selected?: boolean) => (
     <Avatar
       showFallback
@@ -44,6 +46,9 @@ export const ListItem: React.FC<ListItemProps> = ({
         {renderTitle ? renderTitle() : title}
         <div className="text-secondary text-xs">
           {renderDescription ? renderDescription() : description}
+        </div>
+        <div className="text-secondary text-xs">
+          {renderStatus ? renderStatus() : null}
         </div>
       </div>
     </div>

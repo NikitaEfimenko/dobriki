@@ -1,14 +1,19 @@
+'use client'
 import { usePrevious } from '@/shared/hooks';
 import { Geolocation } from '@capacitor/geolocation';
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import type { Position } from '@capacitor/geolocation';
 
 import { PluginListenerHandle } from '@capacitor/core';
 import { Motion } from '@capacitor/motion';
 import type { AccelListenerEvent } from '@capacitor/motion';
-import { calcPersonSpecific, calculateCalories, calculateHorizontalDistance, calculateSteps } from './utils';
+import { QueueKeys, Activity, ActivityTypes } from '../types';
+import { useToast } from "@/shared/ui/use-toast"
 
+import { calcPersonSpecific, calculateCalories, calculateHorizontalDistance, calculateSteps } from './utils';
+import axios from 'axios';
+import { usePresence } from '@ably-labs/react-hooks';
 
 
 export const useMotionActivity = () => {
@@ -31,38 +36,88 @@ export const useMotionActivity = () => {
   ]
 }
 
-export const useWalkActivity = () => {
+const sync = async (data?: any) => {
+  await axios.patch(`${process.env.NEXT_PUBLIC_BACKEND_URL}activity/sync`, {
+    data: "save"
+  })
+}
+
+export const useSensorSync = (team: string, activityValues: Activity & { isTracking: boolean }) => {
+  const { toast } = useToast()
+  useQuery({
+    queryKey: [QueueKeys.SYNC], 
+    queryFn: sync,
+    refetchInterval: 20000,
+    onSuccess: (data) => {
+      toast({
+        title: "Успешно синхронизировали данные в service worker",
+        description: Date.now(),
+      })
+    }
+  });
+
+  useEffect(() => {
+    return () => {
+      (async () => {
+        await sync()
+      })()
+    }
+  }, [])
+
+  const [_, updateStatus] = usePresence<typeof activityValues>(team);
+
+  return updateStatus
+}
+
+
+type useActivityConfig = {
+  autotrack?: boolean,
+  activity: typeof ActivityTypes[keyof typeof ActivityTypes],
+}
+
+const getCurrentPosition = async () => {
+  const coordinates = await Geolocation.getCurrentPosition();
+  return coordinates
+}
+
+const team = "team"
+
+const getActivity = (type: typeof ActivityTypes[keyof typeof ActivityTypes], distance: number) => {
+  const { stepLength, specificCalories } = calcPersonSpecific()
+
+  const stepCount = calculateSteps(distance, stepLength)
+  const calories = calculateCalories(stepCount, stepLength, specificCalories)
+  
+  return {
+    stepCount,
+    calories,
+    distance,
+    type
+  } satisfies Activity
+}
+
+
+export const useActivity = (config: useActivityConfig = {
+  activity: ActivityTypes.Rest
+}) => {
   const [coordinates, setCoordinates] = useState<Position>()
   const previous = usePrevious(coordinates)
-  
   const [distance, setDistance] = useState<number>()
-  
-  const getCurrentPosition = async () => {
-    const coordinates = await Geolocation.getCurrentPosition();
-    return coordinates
-  }
+
+  const [isTracking, setIsTracking] = useState(config.autotrack ?? false)
+
+  const [currentActivity, setCurrentActivity] = useState(config.activity)
 
   useQuery({
-    queryKey: ["position"],
+    queryKey: ["activity", currentActivity],
     queryFn: getCurrentPosition,
-    refetchInterval: 2000,
+    refetchInterval: 10000,
     onSuccess: (data) => {
       setCoordinates(data)
-    }
+    },
+    enabled: !!isTracking && (currentActivity != ActivityTypes.Rest)
   })
 
-  const getActivity = (distance: number) => {
-    const { stepLength, specificCalories } = calcPersonSpecific()
-
-    const stepCount = calculateSteps(distance, stepLength)
-    const calories = calculateCalories(stepCount, stepLength, specificCalories)
-    
-    return {
-      stepCount,
-      calories,
-      distance
-    } satisfies Activity
-  }
 
   useEffect(() => {
     setDistance(prev => {
@@ -80,9 +135,39 @@ export const useWalkActivity = () => {
     })
   }, [coordinates, previous])
 
+  const activityValues = useMemo(() => getActivity(currentActivity, distance ?? 0), [currentActivity, distance])
+
+  const memoized = useMemo(() => ({...activityValues, isTracking }), [activityValues, isTracking])
+
+  const updateStatus = useSensorSync(team, memoized)
+
+  const [subscibe, unsubscribe, switchActivity] = useMemo(() => {
+    return [
+      () => {
+        setIsTracking(true)
+        updateStatus({...activityValues, isTracking: true })
+      },
+      () => {
+        setIsTracking(true)
+        updateStatus({...activityValues, isTracking: false })
+      },
+      (newActivity: typeof ActivityTypes[keyof typeof ActivityTypes]) => {
+        setCurrentActivity(newActivity)
+        updateStatus({...activityValues, isTracking: isTracking, type: newActivity })
+      }
+    ]
+  }, [])
+
+  const calculatedActivity = useMemo(() => getActivity(currentActivity, distance ?? 0), [currentActivity, distance])
+
   return {
     position: coordinates,
-    activities: getActivity(distance ?? 0)
+    activities: calculatedActivity,
+    actions: {
+      subscibe,
+      unsubscribe,
+      switchActivity
+    }
   }
 }
 

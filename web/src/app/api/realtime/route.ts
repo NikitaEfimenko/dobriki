@@ -2,9 +2,8 @@
 import * as Ably from "ably/promises";
 import { getServerSession } from 'next-auth';
 
-import { NextApiRequest, NextApiResponse } from 'next'
+import { authOptions } from "@/config/auth-config-base";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "@/config/auth-config";
 
 async function handler(
   req: NextRequest,
@@ -22,11 +21,16 @@ async function handler(
 
   const clientId = session?.user?.email || "GUEST_TOKEN";
   const client = new Ably.Rest(process.env.ABLY_API_KEY);
-  const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
-
-  return new NextResponse(JSON.stringify(tokenRequestData), {
-    status: 200
-  })
+  try {
+    const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
+    return NextResponse.json(tokenRequestData, {
+      status: 200
+    })
+  } catch (e) {
+    return NextResponse.json({ reason: e }, {
+      status: 500
+    })
+  }
 }
 
-export { handler as POST, handler as PUT, handler as PATCH}
+export { handler as PATCH, handler as POST, handler as PUT, handler as GET };

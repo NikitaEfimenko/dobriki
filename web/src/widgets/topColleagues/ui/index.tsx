@@ -20,8 +20,8 @@ export const TopColleagues: React.FC<TopColleaguesProps> = ({
           description={description}
           renderImage={() => (
             <Avatar
-              isBordered
-              color="success"
+              // isBordered
+              // color="success"
               src="https://i.pravatar.cc/150?u=a04258114e29026302d"
             />
           )}
