@@ -52,11 +52,11 @@ export const Routemap = () => {
   }, [actions])
 
   return <Card className="flex flex-col gap-5">
-    <CardHeader title="Маршруты на сегодня" />
+    <CardHeader title="Маршрут на сегодня" />
     <Suspense fallback={skeleton}>
       {center ? <YMaps zoom={14} center={center}>
-        <div>
-          <Map defaultState={{ center: center, zoom: 16 }}>
+        <div className='w-full rounded-md overflow-hidden flex items-center justify-center'>
+          <Map width={360} height={320} defaultState={{ center: center, zoom: 16 }}>
             <Placemark geometry={center} />
             <Polyline
               geometry={path}

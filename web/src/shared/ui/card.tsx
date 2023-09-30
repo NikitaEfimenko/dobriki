@@ -1,19 +1,41 @@
 import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/shared/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+const cardVariants = cva(
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  {
+    variants: {
+      size: {
+        tiny: "p-3 bg-card rounded-xl border-0 leading-[130%]",
+        default: "p-4 pb-6 bg-card rounded-3xl border-0",
+      },
+      variant: {
+        default: "",
+        primary: "bg-accent-darken",
+        secondary: "bg-secondary-darken"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default"
+    },
+  }
+)
+interface CardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
   shadow?: boolean;
 }
 
+
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ shadow = true, className, ...props }, ref) => (
+  ({ shadow = true, className, size, variant, ...props }, ref) => (
     <div
       ref={ref}
       className={cn(
-        "p-4 pb-6 bg-card rounded-3xl",
+        cardVariants({ size, variant}),
+        shadow ? "shadow" : "",
         className,
-        shadow ? "shadow" : ""
       )}
       {...props}
     />
@@ -88,3 +110,7 @@ export {
   CardDescription,
   CardContent,
 };
+
+export type {
+  CardProps
+}

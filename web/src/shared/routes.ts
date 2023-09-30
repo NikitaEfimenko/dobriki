@@ -22,4 +22,6 @@ export const routes = {
   personalForm: () => `${forms}/personal/`,
   goalForm: () => `${forms}/goal/`,
   organizationForm: () => `${forms}/organization/`,
+
+  dobriki: () => `${app}/dobriki/`
 };

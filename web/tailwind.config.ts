@@ -37,6 +37,7 @@ module.exports = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          darken: "rgba(132, 89, 255, 0.16)"
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -49,6 +50,7 @@ module.exports = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          darken: "rgba(41, 215, 13, 0.16)"
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

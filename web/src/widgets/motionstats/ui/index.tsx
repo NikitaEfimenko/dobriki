@@ -19,7 +19,7 @@ export const MotionStats = () => {
         activities.calories / 1000
       ).toFixed(0)} ккал)`
     }
-    switch(activities.type) {
+    switch (activities.type) {
       case ActivityTypes.Bicycle:
         return defaultConfig
       case ActivityTypes.Rest:
@@ -43,12 +43,11 @@ export const MotionStats = () => {
     }
   }, [activities])
 
-  return (
-    <Card className="flex gap-8 flex-col rounded-t-none">
-      <PageHeader
-        {...activityProps}
-      />
-      <WeeklyStats />
-    </Card>
-  );
+  return <>
+    <PageHeader
+      {...activityProps}
+    />
+    <WeeklyStats />
+  </>
+
 };
