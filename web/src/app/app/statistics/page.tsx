@@ -18,8 +18,9 @@ import { Suspense, useState } from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@nextui-org/react";
 
-const Routemap = dynamic(() =>
-  import("@/widgets/routemap").then((c) => ({ default: c.Routemap })), {ssr: false}
+const Routemap = dynamic(
+  () => import("@/widgets/routemap").then((c) => ({ default: c.Routemap })),
+  { ssr: false }
 );
 
 const periods = [
@@ -39,7 +40,7 @@ export default function StatisticsPage() {
           <GoalProgress value={93} title="ежедневной цели" />
         </div>
       </Card>
-      <BarChart/>
+      <BarChart />
 
       <Suspense fallback={<Skeleton></Skeleton>}>
         <Routemap />
@@ -66,8 +67,8 @@ export default function StatisticsPage() {
                   <path
                     d="M4 6L8 10L12 6"
                     stroke="#32E914"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </div>

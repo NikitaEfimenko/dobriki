@@ -1,17 +1,19 @@
 import * as React from "react";
-import { IconActivityForeground, IconPlayer } from "@/icons";
+import { ActivityKeys, IconActivity, IconPlayer } from "@/icons";
 import { cn, nullable } from "@/shared/utils";
 
 interface ActivityItemProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   description: string;
   player?: boolean;
+  activity?: ActivityKeys;
 }
 
 export const ActivityItem: React.FC<ActivityItemProps> = ({
   title,
   description,
   player,
+  activity,
   className,
   ...attrs
 }) => {
@@ -24,7 +26,12 @@ export const ActivityItem: React.FC<ActivityItemProps> = ({
         <div className="font-semibold">{title}</div>
         <div className="text-[13px] text-white/80">{description}</div>
       </div>
-      <IconActivityForeground className="absolute top-1 right-[-0.5px] opacity-20" />
+      {nullable(activity, (act) => (
+        <IconActivity
+          activity={act}
+          className="absolute top-2 right-2 opacity-80"
+        />
+      ))}
     </div>
   );
 };

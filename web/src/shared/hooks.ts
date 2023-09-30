@@ -33,6 +33,8 @@ export const useRouter = () => {
     // **
 
     form: () => router.push(routes.form()),
+    formAuth: () => router.push(routes.formAuth()),
+    formAuthSended: () => router.push(routes.formAuthSended()),
     personalForm: () => router.push(routes.personalForm()),
     goalForm: () => router.push(routes.goalForm()),
     organizationForm: () => router.push(routes.organizationForm()),

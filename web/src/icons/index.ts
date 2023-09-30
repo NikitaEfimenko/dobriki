@@ -1,5 +1,6 @@
 export * from "./animals";
 export * from "./activity";
+export * from "./activity-run";
 export * from "./back";
 export * from "./chevron-right";
 export * from "./heart";

@@ -11,13 +11,17 @@ import { Suspense } from "react";
 
 import { Card } from "@/shared/ui/card";
 import { HotPanels } from "@/widgets/hot-panels/ui/index";
-
-const TopColleaguesRealtime = dynamic(() => import('@/widgets/topColleagues/ui/realtime').then(module => module.TopColleaguesRealtime), {
-  ssr: false,
-})
+const TopColleaguesRealtime = dynamic(
+  () =>
+    import("@/widgets/topColleagues/ui/realtime").then(
+      (module) => module.TopColleaguesRealtime
+    ),
+  {
+    ssr: false,
+  }
+);
 
 export default function HomePage() {
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <div className="z-10 flex gap-4 flex-col w-full">
@@ -27,7 +31,7 @@ export default function HomePage() {
               <MotionStats />
             </div>
           </AblyProvider>
-          <HotPanels/>
+          <HotPanels />
         </Card>
         <ChallengesCarousel />
         <TopColleagues />
@@ -35,7 +39,6 @@ export default function HomePage() {
           <TopColleaguesRealtime />
         </Suspense>
       </div>
-
     </main>
   );
 }

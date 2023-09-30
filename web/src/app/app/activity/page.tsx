@@ -3,39 +3,51 @@
 import { ListCard } from "@/entities/listCard";
 import { ActivityItem } from "@/features/activityItem";
 import { PageHeader } from "@/features/pageHeader";
-import { IconPlayer } from "@/icons";
+import { ActivityKeys, IconPlayer } from "@/icons";
 import { Card } from "@/shared/ui/card";
-import { cn, nullable } from "@/shared/utils";
+import { cn } from "@/shared/utils";
 
-const activities = [
+type Activity = {
+  title: string;
+  description: string;
+  background: string;
+  player?: boolean;
+  activity?: ActivityKeys;
+};
+
+const activities: Activity[] = [
   {
     title: "Бег",
     description: "1 добрик = 1 км",
-    background: "hsla(313, 77%, 56%, 0.46)",
+    background: "hsla(339, 76%, 59%, 1)",
     player: true,
+    activity: "run",
   },
   {
     title: "Лыжи",
     description: "2 добрика = 1 км",
-    background: "hsla(223, 100%, 67%, 0.66)",
+    background: "hsla(207, 91%, 64%, 1)",
     player: true,
+    activity: "skis",
   },
   {
     title: "Велосипед",
     description: "1 добрик = 2 км",
-    background: "hsla(122, 77%, 60%, 0.46)",
+    background: "hsla(131, 50%, 50%, 1)",
     player: true,
+    activity: "bike",
   },
   {
     title: "Ходьба",
     description: "1 добрик = 100 шагов",
-    background: "hsla(234, 100%, 56%, 0.56)",
+    background: "hsla(42, 96%, 50%, 1)",
     player: true,
+    activity: "step",
   },
   {
     title: "Собери добрики",
     description: "Посети 5 парков Москвы и получи 500 добриков",
-    background: "hsla(256, 100%, 67%, 0.56)",
+    background: "hsla(256, 100%, 67%, 1)",
   },
 ];
 
@@ -52,23 +64,26 @@ export default function ActivityPage() {
         items={activities}
         renderItems={(items) => (
           <div className="grid grid-cols-2 gap-4">
-            {items.map(({ title, description, background, player }, index) => (
-              <Card
-                shadow={false}
-                key={index}
-                className={cn(
-                  "relative",
-                  index === items.length - 1 ? "col-span-2" : ""
-                )}
-                style={{ background }}
-              >
-                <ActivityItem
-                  title={title}
-                  description={description}
-                  player={player}
-                />
-              </Card>
-            ))}
+            {items.map(
+              ({ title, description, background, player, activity }, index) => (
+                <Card
+                  shadow={false}
+                  key={index}
+                  className={cn(
+                    "relative",
+                    index === items.length - 1 ? "col-span-2" : ""
+                  )}
+                  style={{ background }}
+                >
+                  <ActivityItem
+                    title={title}
+                    description={description}
+                    player={player}
+                    activity={activity}
+                  />
+                </Card>
+              )
+            )}
           </div>
         )}
       />

@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/shared/ui/button";
 import { useRouter } from "@/shared/hooks";
 import { FloatingButton } from "@/shared/ui/floating-button";
 
@@ -51,10 +50,7 @@ export default function GoalFormPage() {
       </Card>
       <Card shadow={false}>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-4"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
               control={form.control}
               name="goal"

@@ -527,8 +527,8 @@ export const animals = [
       d="M64.6325 21.9592C64.6325 21.9592 61.7302 20.1732 61.8046 18.0522"
       stroke="#6B3736"
       stroke-miterlimit="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M52.5767 6.92676L52.7256 8.04304L51.2372 10.1268L49.786 10.3128L49.6372 9.19653C49.6372 9.19653 50.493 7.63373 52.5767 6.92676Z"

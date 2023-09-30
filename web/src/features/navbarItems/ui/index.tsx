@@ -7,7 +7,7 @@ import { cn } from "@/shared/utils";
 import { useRouter } from "@/shared/hooks";
 import { usePathname } from "next/navigation";
 import { routes } from "@/shared/routes";
-import { IconActivity } from "@/icons/activity";
+import { IconActivityRun } from "@/icons";
 
 interface NavbarItemsProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -31,7 +31,7 @@ export const NavbarItems: React.FC<NavbarItemsProps> = ({
         onClick: router.statistics,
       },
       {
-        component: <IconActivity />,
+        component: <IconActivityRun />,
         active: pathname.includes(routes.activity()),
         onClick: router.activity,
         background: "rgba(41, 215, 13, 0.16)",

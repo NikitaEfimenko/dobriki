@@ -1,5 +1,5 @@
 const app = "/app";
-const forms = "/form";
+const form = "/form";
 
 export const routes = {
   app: () => `${app}/`,
@@ -16,12 +16,14 @@ export const routes = {
 
   activity: () => `${app}/activity/`,
 
+  dobriki: () => `${app}/dobriki/`,
+
   // ***
 
-  form: () => `${forms}/`,
-  personalForm: () => `${forms}/personal/`,
-  goalForm: () => `${forms}/goal/`,
-  organizationForm: () => `${forms}/organization/`,
-
-  dobriki: () => `${app}/dobriki/`
+  form: () => `${form}/`,
+  formAuth: () => `${form}/auth/`,
+  formAuthSended: () => `${form}/auth/sended/`,
+  personalForm: () => `${form}/personal/`,
+  goalForm: () => `${form}/goal/`,
+  organizationForm: () => `${form}/organization/`,
 };

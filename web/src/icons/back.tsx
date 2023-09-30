@@ -15,9 +15,9 @@ export const IconBack: React.FC<IconBackProps> = (props) => {
       <path
         d="M20 24L12 16L20 8"
         stroke="#929292"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
