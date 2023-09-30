@@ -1,3 +1,4 @@
+import { CircleProgress } from "@/shared/ui/circle-progress";
 import { CircularProgress } from "@nextui-org/react";
 import { CheckIcon } from "lucide-react";
 
@@ -11,26 +12,7 @@ const DailyProgress = (props: DaylyProgressProps) => {
   return (
     <div className="flex flex-col gap-1 items-center">
       <div className="text-xs">{day}</div>
-      <div className="relative">
-        <CircularProgress
-          classNames={{
-            svg: "w-9 h-9 drop-shadow-md",
-            indicator: "stroke-accent stroke-[2px]",
-            track: "stroke-white/10",
-            value: "text-3xl font-semibold text-white",
-          }}
-          value={percent}
-          showValueLabel={false}
-          id={props.day}
-          label
-        />
-        {percent >= 100 ? (
-          <CheckIcon
-            size={14}
-            className="absolute translate-x-[-50%] translate-y-[-50%] left-[50%] top-[50%] stroke-accent"
-          />
-        ) : null}
-      </div>
+      <CircleProgress percent={percent} />
     </div>
   );
 };

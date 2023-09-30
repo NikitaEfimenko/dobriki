@@ -7,6 +7,7 @@ import { cn } from "@/shared/utils";
 import { useRouter } from "@/shared/hooks";
 import { usePathname } from "next/navigation";
 import { routes } from "@/shared/routes";
+import { IconActivity } from "@/icons/activity";
 
 interface NavbarItemsProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -30,6 +31,12 @@ export const NavbarItems: React.FC<NavbarItemsProps> = ({
         onClick: router.statistics,
       },
       {
+        component: <IconActivity />,
+        active: pathname.includes(routes.activity()),
+        onClick: router.activity,
+        background: "rgba(41, 215, 13, 0.16)",
+      },
+      {
         component: <IconHeart />,
         active: pathname.includes(routes.digest()),
         onClick: router.digest,
@@ -50,9 +57,15 @@ export const NavbarItems: React.FC<NavbarItemsProps> = ({
       )}
       {...attrs}
     >
-      {items.map(({ component, active, onClick }, index) => {
+      {items.map(({ component, active, onClick, ...rest }, index) => {
+        const background = active ? rest.background : "";
         return (
-          <NavbarItem key={index} active={active} onClick={onClick}>
+          <NavbarItem
+            key={index}
+            active={active}
+            onClick={onClick}
+            style={{ background }}
+          >
             {component}
           </NavbarItem>
         );

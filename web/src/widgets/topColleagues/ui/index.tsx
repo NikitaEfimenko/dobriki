@@ -4,15 +4,18 @@ import { ListItem } from "@/shared/ui/list-item";
 import { Avatar } from "@nextui-org/react";
 import * as React from "react";
 
-interface TopColleaguesProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface TopColleaguesProps extends React.HTMLAttributes<HTMLDivElement> {
+  limit?: number;
+}
 
 export const TopColleagues: React.FC<TopColleaguesProps> = ({
+  limit = 5,
   className,
   ...attrs
 }) => {
   return (
     <ListCard
-      items={topColleagues.slice(5)}
+      items={topColleagues.slice(limit)}
       renderItem={({ id, title, description }) => (
         <ListItem
           key={id}

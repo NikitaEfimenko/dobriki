@@ -15,7 +15,7 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
   return (
     <div
       className={cn(
-        "py-[10px] px-5 rounded-lg",
+        "py-[10px] px-4 rounded-lg",
         active ? "bg-items-active" : "",
         className
       )}

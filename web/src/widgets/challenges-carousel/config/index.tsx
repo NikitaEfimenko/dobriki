@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "@/shared/ui/button";
-import { Progress } from "@/shared/ui/progress";
 import type { ChallengeItemProps } from "@/entities/challenge/types";
 import { nullable } from "@/shared/utils";
+import { GoalProgress } from "@/shared/ui/goal-progress";
+import { ReactNode } from "react";
 
 const renderDescription = ({
   description,
@@ -16,7 +17,7 @@ const renderDescription = ({
     <div className="flex items-baseline gap-[6px]">
       <div className="text-base text-accent">{description}</div>
       {nullable(preDescription, (preDesc) => (
-        <div className="text-items">{preDesc}</div>
+        <div className="text-secondary">{preDesc}</div>
       ))}
     </div>
   );
@@ -26,11 +27,7 @@ const title = "Октябрь 2023";
 export const carouselConfig = [
   {
     title,
-    renderTrigger: () => (
-      <Button className="w-full h-[34px] bg-accent text-black">
-        Участвовать
-      </Button>
-    ),
+    renderTrigger: () => <Button>Участвовать</Button>,
     renderDescription: () =>
       renderDescription({
         description: "120 000 шагов",
@@ -39,12 +36,7 @@ export const carouselConfig = [
   },
   {
     title,
-    renderTrigger: () => (
-      <div className="flex flex-col gap-2">
-        <div>9% от цели челенджа</div>
-        <Progress value={9} />
-      </div>
-    ),
+    renderTrigger: (value = 9) => <GoalProgress value={value} />,
     renderDescription: () =>
       renderDescription({
         description: "9 238 из 120 000 шагов",
@@ -52,12 +44,7 @@ export const carouselConfig = [
   },
   {
     title,
-    renderTrigger: () => (
-      <div className="flex flex-col gap-2">
-        <div>100% от цели челенджа</div>
-        <Progress value={100} />
-      </div>
-    ),
+    renderTrigger: (value = 100) => <GoalProgress value={value} />,
     renderDescription: () =>
       renderDescription({
         description: "Челлендж пройден",

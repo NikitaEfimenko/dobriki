@@ -16,6 +16,7 @@ export const useRouter = () => {
   const router = NextRouter();
 
   return {
+    app: () => router.push(routes.app()),
     home: () => router.push(routes.home()),
     donations: () => router.push(routes.donations()),
     topColleagues: () => router.push(routes.topColleagues()),
@@ -26,5 +27,14 @@ export const useRouter = () => {
     organizations: () => router.push(routes.organizations()),
 
     profile: () => router.push(routes.profile()),
+
+    activity: () => router.push(routes.activity()),
+
+    // **
+
+    form: () => router.push(routes.form()),
+    personalForm: () => router.push(routes.personalForm()),
+    goalForm: () => router.push(routes.goalForm()),
+    organizationForm: () => router.push(routes.organizationForm()),
   };
 };
