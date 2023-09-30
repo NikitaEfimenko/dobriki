@@ -74,7 +74,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-sm text-primary;
+    @apply bg-background text-sm text-primary min-h-[100lvh];
   }
 }
 
@@ -98,4 +98,9 @@
 .award-hidden * {
   fill: #000 !important;
   stroke: #000 !important;
+}
+
+input {
+  background: inherit;
+  color: #fff;
 }

@@ -1,14 +1,25 @@
+const app = "/app";
+const forms = "/form";
+
 export const routes = {
-  home: () => "/home/",
-  donations: () => "/home/donations/",
-  topColleagues: () => "/home/top-colleagues",
+  app: () => `${app}/`,
+  home: () => `${app}/home/`,
+  donations: () => `${app}/home/donations/`,
+  topColleagues: () => `${app}/home/top-colleagues`,
 
-  statistics: () => "/statistics/",
+  statistics: () => `${app}/statistics/`,
 
-  digest: () => "/digest/",
-  organizations: () => "/digest/organizations/",
+  digest: () => `${app}/digest/`,
+  organizations: () => `${app}/digest/organizations/`,
 
-  profile: () => "/profile/",
+  profile: () => `${app}/profile/`,
 
-  activity: () => "/activity/",
+  activity: () => `${app}/activity/`,
+
+  // ***
+
+  form: () => `${forms}/`,
+  personalForm: () => `${forms}/personal/`,
+  goalForm: () => `${forms}/goal/`,
+  organizationForm: () => `${forms}/organization/`,
 };

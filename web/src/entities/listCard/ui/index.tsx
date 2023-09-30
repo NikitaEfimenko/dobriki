@@ -2,8 +2,11 @@ import * as React from "react";
 import { CardHeader } from "@/features/cardHeader";
 import { ListItems } from "@/features/listItems";
 import { Card } from "@/shared/ui/card";
+import { nullable } from "@/shared/utils";
 
-interface ListCardProps<T> extends React.HTMLAttributes<HTMLDivElement> {
+interface ListCardProps<T>
+  extends React.HTMLAttributes<HTMLDivElement>,
+    React.ComponentProps<typeof Card> {
   title?: React.ComponentProps<typeof CardHeader>["title"];
   route?: React.ComponentProps<typeof CardHeader>["route"];
 
@@ -24,7 +27,9 @@ export function ListCard<T>({
 }: ListCardProps<T>) {
   return (
     <Card {...attrs} className="flex flex-col gap-5">
-      <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
+      {nullable(title || route || renderTrigger, () => (
+        <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
+      ))}
       <ListItems
         items={items}
         renderItem={renderItem}

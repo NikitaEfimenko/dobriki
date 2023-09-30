@@ -29,10 +29,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         {...attrs}
       >
         {nullable(top, (string) => (
-          <div className="text-[28px] leading-[130%]">{string}</div>
+          <div className="text-[26px] leading-[130%]">{string}</div>
         ))}
         {nullable(middle, (string) => (
-          <div className="text-[38px] text-accent leading-[130%]">{string}</div>
+          <div className="text-[36px] text-accent leading-[130%]">{string}</div>
         ))}
         {nullable(end, (string) => (
           <div className="text-[20px] font-bold leading-[130%]">{string}</div>

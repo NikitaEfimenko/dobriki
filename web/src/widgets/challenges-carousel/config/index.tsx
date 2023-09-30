@@ -27,11 +27,7 @@ const title = "Октябрь 2023";
 export const carouselConfig = [
   {
     title,
-    renderTrigger: () => (
-      <Button className="w-full h-[34px] bg-accent text-black">
-        Участвовать
-      </Button>
-    ),
+    renderTrigger: () => <Button>Участвовать</Button>,
     renderDescription: () =>
       renderDescription({
         description: "120 000 шагов",

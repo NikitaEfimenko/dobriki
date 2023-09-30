@@ -51,7 +51,7 @@ export default function ActivityPage() {
       <ListCard
         items={activities}
         renderItems={(items) => (
-          <div className="grid grid-cols-2 gap-y-5 gap-x-4">
+          <div className="grid grid-cols-2 gap-4">
             {items.map(({ title, description, background, player }, index) => (
               <Card
                 shadow={false}

@@ -6,13 +6,25 @@ import { ListCard } from "@/entities/listCard";
 import { PageHeader } from "@/features/pageHeader";
 import { Card } from "@/shared/ui/card";
 import { animals, goals } from "@/icons/animals";
-import { cn } from "@/shared/utils";
-import { CircleProgress } from "@/shared/ui/circle-progress";
 import { AwardItem } from "@/features/awardItem";
+import { Input } from "@/shared/ui/input";
+
+const defaultStepsValue = 10_000;
 
 export default function ProfilePage() {
   const profileSettings = React.useMemo(() => {
-    return [{ renderItem: () => <input /> }];
+    return [
+      {
+        renderItem: (value?: number) => (
+          <Input
+            label="Количество шагов"
+            type="number"
+            min={0}
+            value={`${value}`}
+          />
+        ),
+      },
+    ];
   }, []);
 
   const awards = React.useMemo(() => {
@@ -30,12 +42,15 @@ export default function ProfilePage() {
   return (
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-8 rounded-t-none">
-        <PageHeader top="Цель 10 000 шагов" middle="9 382 шага" />
+        <PageHeader
+          top={`Цель ${defaultStepsValue} шагов`}
+          middle="9 382 шага"
+        />
       </Card>
       <ListCard
         title="Цель на день"
         items={profileSettings}
-        renderItem={({ renderItem }) => renderItem()}
+        renderItem={({ renderItem }) => renderItem(defaultStepsValue)}
       />
       <ListCard
         title="Награды"
