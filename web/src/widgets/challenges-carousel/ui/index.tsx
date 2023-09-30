@@ -17,7 +17,7 @@ export const ChallengesCarousel = () => {
 
   return (
     <Card className="flex flex-col gap-5 w-[inherit]">
-      <CardHeader title="Челленджи" route="statistics" />
+      <CardHeader title="Челленджи" />
       <Carousel list={list} />
     </Card>
   );
