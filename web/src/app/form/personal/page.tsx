@@ -11,23 +11,15 @@ import {
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import { useForm } from "react-hook-form";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/shared/ui/button";
 import { useRouter } from "@/shared/hooks";
 import { FloatingButton } from "@/shared/ui/floating-button";
 
 const formSchema = z.object({
-  weight: z.string().min(2, {
-    message: "сдует",
-  }),
-  height: z.string().min(3, {
-    message: "коротковат",
-  }),
-  age: z.string().min(2, {
-    message: "маловат",
-  }),
+  weight: z.string(),
+  height: z.string(),
+  age: z.string(),
 });
 
 export default function PersonalFormPage() {
@@ -69,7 +61,7 @@ export default function PersonalFormPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input label="Вес, кг" {...field} type="number" />
+                    <Input required label="Вес, кг" {...field} type="number" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -81,7 +73,7 @@ export default function PersonalFormPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input label="Рост, см" {...field} type="number" />
+                    <Input required label="Рост, см" {...field} type="number" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,7 +85,12 @@ export default function PersonalFormPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input label="Возраст, лет" {...field} type="number" />
+                    <Input
+                      required
+                      label="Возраст, лет"
+                      {...field}
+                      type="number"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

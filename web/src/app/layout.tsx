@@ -63,9 +63,6 @@ export default async function RootLayout({
         <Providers>
           {children}
           <Toaster />
-          <div className="h-[100vh] w-[100vw] bg-black fixed top-0 left-0 z-[99999] overflow-hidden device-hidden">
-            сорямба ток мобильная версия
-          </div>
         </Providers>
       </body>
     </html>

@@ -12,6 +12,7 @@ import { useAchievements } from "@/entities/feeds/api";
 import { Achievement } from "@/shared/api/models/achievement";
 import { nullable } from "@/shared/utils";
 import { Skeleton } from "@/shared/ui/skeleton";
+import { LoginButton } from "@/features/loginButton";
 
 interface Award extends Achievement {
   renderItem: (
@@ -64,6 +65,7 @@ export default function ProfilePage() {
           middle="9 382 шага"
         />
       </Card>
+      <LoginButton />
       <ListCard
         title="Цель на день"
         items={profileSettings}

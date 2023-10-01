@@ -1,5 +1,6 @@
 "use client";
 
+import { useCharities } from "@/entities/charity/hooks";
 import { useFeeds } from "@/entities/feeds/api";
 import { ListCard } from "@/entities/listCard";
 import { organizations } from "@/features/listItems/config";
@@ -12,6 +13,8 @@ import Image from "next/image";
 export default function DigestPage() {
   const router = useRouter();
   const { data, isLoading } = useFeeds();
+  const { data: organizations } = useCharities();
+
   return (
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-6 rounded-t-none">
@@ -38,9 +41,9 @@ export default function DigestPage() {
         })}
       </div>
       <ListCard
-        items={organizations.slice(5)}
-        renderItem={({ id, title, description }) => (
-          <ListItem key={id} title={title} description={description} />
+        items={organizations ? organizations.slice(0, 5) : undefined}
+        renderItem={({ name, id, description }) => (
+          <ListItem key={id} title={name} description={description} />
         )}
         title="Топ организаций"
         route="organizations"

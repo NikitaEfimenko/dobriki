@@ -23,12 +23,11 @@ export default function TopColleaguesPage() {
           email,
           first_name,
           last_name,
-          online = true,
         }) => {
           const title = first_name ? `${first_name} ${last_name}` : username;
           return (
             <ListItem key={email} title={title} description={username}>
-              {nullable(online, () => (
+              {nullable(Math.random() > 0.5, () => (
                 <OnlineBadge />
               ))}
             </ListItem>

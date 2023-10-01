@@ -57,9 +57,10 @@ export default function ActivityPage() {
 
   const activities = useMemo(() => {
     return (
-      (data?.map(({ name, description }, index) => {
+      (data?.map(({ id, name, description }, index) => {
         const mock = activitiesMock[index];
         return {
+          id,
           title: name || mock.title,
           description: description || mock.description,
           background: mock.background,
