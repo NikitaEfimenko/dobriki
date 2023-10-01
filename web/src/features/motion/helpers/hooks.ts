@@ -13,7 +13,9 @@ import { useToast } from "@/shared/ui/use-toast"
 
 import { calcPersonSpecific, calculateCalories, calculateHorizontalDistance, calculateSteps } from './utils';
 import axios from 'axios';
-import { usePresence } from '@ably-labs/react-hooks';
+import { configureAbly, usePresence } from '@ably-labs/react-hooks';
+
+configureAbly({ authUrl: "/api/realtime"})
 
 
 export const useMotionActivity = () => {
@@ -42,32 +44,32 @@ const sync = async (data?: any) => {
   })
 }
 
-export const useSensorSync = (team: string, activityValues: Activity & { isTracking: boolean }) => {
-  const { toast } = useToast()
-  useQuery({
-    queryKey: [QueueKeys.SYNC], 
-    queryFn: sync,
-    refetchInterval: 20000,
-    onSuccess: (data) => {
-      toast({
-        title: "Успешно синхронизировали данные в service worker",
-        description: Date.now(),
-      })
-    }
-  });
+// export const useSensorSync = (team: string, activityValues: Activity & { isTracking: boolean }) => {
+//   const { toast } = useToast()
+//   useQuery({
+//     queryKey: [QueueKeys.SYNC], 
+//     queryFn: sync,
+//     refetchInterval: 20000,
+//     onSuccess: (data) => {
+//       toast({
+//         title: "Успешно синхронизировали данные в service worker",
+//         description: Date.now(),
+//       })
+//     }
+//   });
 
-  useEffect(() => {
-    return () => {
-      (async () => {
-        await sync()
-      })()
-    }
-  }, [])
+//   useEffect(() => {
+//     return () => {
+//       (async () => {
+//         await sync()
+//       })()
+//     }
+//   }, [])
 
-  const [_, updateStatus] = usePresence<typeof activityValues>(team);
+//   const [_, updateStatus] = usePresence<typeof activityValues>(team);
 
-  return updateStatus
-}
+//   return updateStatus
+// }
 
 
 type useActivityConfig = {
@@ -98,24 +100,24 @@ const getActivity = (type: typeof ActivityTypes[keyof typeof ActivityTypes], dis
 
 
 export const useActivity = (config: useActivityConfig = {
-  activity: ActivityTypes.Rest
+  activity: ActivityTypes.Walking
 }) => {
   const [coordinates, setCoordinates] = useState<Position>()
   const previous = usePrevious(coordinates)
   const [distance, setDistance] = useState<number>()
 
-  const [isTracking, setIsTracking] = useState(config.autotrack ?? false)
+  const [isTracking, setIsTracking] = useState(true)
 
   const [currentActivity, setCurrentActivity] = useState(config.activity)
 
   useQuery({
     queryKey: ["activity", currentActivity],
     queryFn: getCurrentPosition,
-    refetchInterval: 10000,
+    refetchInterval: 3000,
     onSuccess: (data) => {
       setCoordinates(data)
     },
-    enabled: !!isTracking && (currentActivity != ActivityTypes.Rest)
+    enabled: !!isTracking
   })
 
 
@@ -139,7 +141,9 @@ export const useActivity = (config: useActivityConfig = {
 
   const memoized = useMemo(() => ({...activityValues, isTracking }), [activityValues, isTracking])
 
-  const updateStatus = useSensorSync(team, memoized)
+  // const updateStatus = useSensorSync(team, memoized)
+  const [_, updateStatus] = usePresence<Activity & { isTracking: boolean }>(team, memoized);
+
 
   const [subscibe, unsubscribe, switchActivity] = useMemo(() => {
     return [

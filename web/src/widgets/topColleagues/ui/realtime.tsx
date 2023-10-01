@@ -21,6 +21,8 @@ export const TopColleaguesRealtime: React.FC<TopColleaguesProps> = ({
 
   const members = useRealtimeStats()
 
+  console.log(members)
+
   return (
     <ListCard
       items={members}

@@ -13,33 +13,36 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { Charity } from './charity';
 
 /**
  * 
  * @export
- * @interface CharitySubscription
+ * @interface Transaction
  */
-export interface CharitySubscription {
+export interface Transaction {
     /**
      * 
      * @type {number}
-     * @memberof CharitySubscription
+     * @memberof Transaction
      */
     'id'?: number;
     /**
      * 
-     * @type {Charity}
-     * @memberof CharitySubscription
-     */
-    'charity': Charity;
-    /**
-     * 
      * @type {string}
-     * @memberof CharitySubscription
+     * @memberof Transaction
      */
     'created_at'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Transaction
+     */
+    'sum': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Transaction
+     */
+    'fund': number;
 }
 

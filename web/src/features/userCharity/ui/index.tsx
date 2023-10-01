@@ -8,6 +8,8 @@ import { useRouter } from "@/shared/hooks";
 export const UserCharityPanel = () => {
   const router = useRouter()
   const { data: myChatiry } = useMyCharity()
+
+  console.log(myChatiry)
   // const applyCharity = useСhooseCharity()
 
   return <Panel

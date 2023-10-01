@@ -59,7 +59,7 @@ export function calculateHorizontalDistance(
   lon2: number,
   alt2: number,
 ): number {
-  const threshold = 2
+  const threshold = 0
   const radius = 6371000;
   const phi1 = (lat1 * Math.PI) / 180;
   const phi2 = (lat2 * Math.PI) / 180;

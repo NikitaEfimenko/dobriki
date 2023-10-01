@@ -14,13 +14,17 @@
 
 
 
-export * from './api/achievement-api';
-export * from './api/achievement-user-api';
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/charity-api';
-export * from './api/charity-subscription-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
-export * from './api/transactions-api';
+/**
+ * 
+ * @export
+ * @interface CreateCharitySubscription
+ */
+export interface CreateCharitySubscription {
+    /**
+     * 
+     * @type {number}
+     * @memberof CreateCharitySubscription
+     */
+    'charity': number;
+}
 

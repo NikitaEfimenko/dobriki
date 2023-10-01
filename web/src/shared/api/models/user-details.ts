@@ -62,5 +62,17 @@ export interface UserDetails {
      * @memberof UserDetails
      */
     'aim'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserDetails
+     */
+    'subscription'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserDetails
+     */
+    'transactions'?: string;
 }
 

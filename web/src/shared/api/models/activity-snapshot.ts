@@ -17,56 +17,56 @@
 /**
  * 
  * @export
- * @interface Charity
+ * @interface ActivitySnapshot
  */
-export interface Charity {
+export interface ActivitySnapshot {
     /**
      * 
      * @type {number}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
     'id'?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Charity
+     * @type {number}
+     * @memberof ActivitySnapshot
      */
-    'organization_name': string;
+    'step_count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActivitySnapshot
+     */
+    'distance': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActivitySnapshot
+     */
+    'time': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActivitySnapshot
+     */
+    'found': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActivitySnapshot
+     */
+    'kcal': number;
     /**
      * 
      * @type {string}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
-    'name': string;
+    'created_at'?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof Charity
+     * @type {number}
+     * @memberof ActivitySnapshot
      */
-    'is_active'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Charity
-     */
-    'approved'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Charity
-     */
-    'description': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Charity
-     */
-    'contact_email'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof Charity
-     */
-    'sum'?: string;
+    'activity_type': number;
 }
 

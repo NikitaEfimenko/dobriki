@@ -11,16 +11,16 @@ type User = {
 }
 
 export const listItemPropsBuilder = (memberActivity: Activity & User): Partial<ListItemProps> => {
+
   const defaultProps = {
     title: `Участник ${memberActivity.clientId.slice(0, 10)}`,
     renderDescription: () => <div className="flex items-center gap-1">
       <span>Сейчас в активности</span>
-      <span>{memberActivity.type}</span>
+      <span>{memberActivity?.type}</span>
     </div>,
     renderStatus: () => {
       return <div className="flex flex-col gap-2">
-        {/* <div>Преодолел дистанцию {memberActivity.distance}</div> */}
-        {/* <Progress value={memberActivity.distance / 100} /> */}
+        <div>Преодолел дистанцию {memberActivity?.distance ?? 0}</div>
       </div>
     },
     renderImage: () => (

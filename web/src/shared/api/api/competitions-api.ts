@@ -34,15 +34,12 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @param {number} id A unique integer value identifying this Пользовательское соревнование.
-         * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        competitionsPersonalApply: async (id: number, data: PersonalCompetition, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        competitionsPersonalApply: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('competitionsPersonalApply', 'id', id)
-            // verify required parameter 'data' is not null or undefined
-            assertParamExists('competitionsPersonalApply', 'data', data)
             const localVarPath = `/competitions/personal/{id}/apply/`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -62,12 +59,9 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(data, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -588,12 +582,11 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @param {number} id A unique integer value identifying this Пользовательское соревнование.
-         * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async competitionsPersonalApply(id: number, data: PersonalCompetition, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PersonalCompetition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.competitionsPersonalApply(id, data, options);
+        async competitionsPersonalApply(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.competitionsPersonalApply(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -744,8 +737,8 @@ export const CompetitionsApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        competitionsPersonalApply(requestParameters: CompetitionsApiCompetitionsPersonalApplyRequest, options?: AxiosRequestConfig): AxiosPromise<PersonalCompetition> {
-            return localVarFp.competitionsPersonalApply(requestParameters.id, requestParameters.data, options).then((request) => request(axios, basePath));
+        competitionsPersonalApply(requestParameters: CompetitionsApiCompetitionsPersonalApplyRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.competitionsPersonalApply(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -877,13 +870,6 @@ export interface CompetitionsApiCompetitionsPersonalApplyRequest {
      * @memberof CompetitionsApiCompetitionsPersonalApply
      */
     readonly id: number
-
-    /**
-     * 
-     * @type {PersonalCompetition}
-     * @memberof CompetitionsApiCompetitionsPersonalApply
-     */
-    readonly data: PersonalCompetition
 }
 
 /**
@@ -1083,7 +1069,7 @@ export class CompetitionsApi extends BaseAPI {
      * @memberof CompetitionsApi
      */
     public competitionsPersonalApply(requestParameters: CompetitionsApiCompetitionsPersonalApplyRequest, options?: AxiosRequestConfig) {
-        return CompetitionsApiFp(this.configuration).competitionsPersonalApply(requestParameters.id, requestParameters.data, options).then((request) => request(this.axios, this.basePath));
+        return CompetitionsApiFp(this.configuration).competitionsPersonalApply(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

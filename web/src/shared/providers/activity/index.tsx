@@ -1,3 +1,5 @@
+import { useActivity } from "@/features/motion/helpers/hooks";
+import { Activity, ActivityTypes } from "@/features/motion/types";
 import { ActivityKeys } from "@/icons";
 import React, {
   createContext,
@@ -20,9 +22,10 @@ type ContextType = {
   activity?: ActivityKeys;
   setPreview?: (activity?: ActivityKeys) => void;
   color?: string;
+  activitiesValues: Activity
 };
 
-const ActivityPreviewProviderContext = createContext<ContextType>({});
+const ActivityPreviewProviderContext = createContext<ContextType>({} as any);
 
 export const useActivityPreview = () => {
   return useContext(ActivityPreviewProviderContext);
@@ -30,7 +33,7 @@ export const useActivityPreview = () => {
 
 export const ActivityProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [activity, setActivity] = useState<
-    Omit<ContextType, "setPreview"> | undefined
+    Omit<Omit<ContextType, "setPreview">, "activitiesValues"> | undefined
   >();
 
   const setPreview = useCallback((activity?: ActivityKeys) => {
@@ -48,13 +51,27 @@ export const ActivityProvider: FC<{ children: ReactNode }> = ({ children }) => {
     });
   }, []);
 
+  const myActivity = useMemo(() => {
+    if (activity?.activity === "Бег") return ActivityTypes.Running
+    if (activity?.activity === "Велосипед") return ActivityTypes.Bicycle
+    if (activity?.activity === "Лыжи") return ActivityTypes.Ski
+    if (activity?.activity === "Ходьба") return ActivityTypes.Walking
+    return ActivityTypes.Walking
+  }, [activity])
+
+
+  const { activities } = useActivity({
+    activity: myActivity
+  })
+
   const value = useMemo(
     () => ({
       color: activity?.color,
       activity: activity?.activity,
       setPreview,
+      activitiesValues: activities
     }),
-    [activity, setPreview]
+    [activity, setPreview, activities]
   );
 
   return (

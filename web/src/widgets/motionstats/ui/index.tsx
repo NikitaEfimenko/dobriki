@@ -7,7 +7,9 @@ import { PageHeader } from "@/features/pageHeader";
 import { useMemo } from "react";
 
 export const MotionStats = () => {
-  const { activities } = useActivity();
+  const { activities } = useActivity({
+    activity: ActivityTypes.Walking
+  });
 
   const activityProps = useMemo(() => {
     const defaultConfig = {
