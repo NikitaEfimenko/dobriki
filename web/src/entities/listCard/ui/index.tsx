@@ -2,7 +2,7 @@ import * as React from "react";
 import { CardHeader } from "@/features/cardHeader";
 import { ListItems } from "@/features/listItems";
 import { Card } from "@/shared/ui/card";
-import { nullable } from "@/shared/utils";
+import { cn, nullable } from "@/shared/utils";
 
 interface ListCardProps<T>
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -20,13 +20,14 @@ export function ListCard<T>({
   title,
   route,
   items,
+  className,
   renderItem,
   renderItems,
   renderTrigger,
   ...attrs
 }: ListCardProps<T>) {
   return (
-    <Card {...attrs} className="flex flex-col gap-5">
+    <Card {...attrs} className={cn("flex flex-col gap-5", className)}>
       {nullable(title || route || renderTrigger, () => (
         <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
       ))}

@@ -1,5 +1,6 @@
 export * from './achievement';
 export * from './activity';
+export * from './activity-snapshot';
 export * from './article';
 export * from './article-author';
 export * from './article-category';
@@ -9,6 +10,7 @@ export * from './article-tag';
 export * from './charity';
 export * from './charity-subscription';
 export * from './cookie-token-refresh';
+export * from './create-charity-subscription';
 export * from './feed-articles-list200-response';
 export * from './login';
 export * from './member';

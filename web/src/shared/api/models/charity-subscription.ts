@@ -41,23 +41,5 @@ export interface CharitySubscription {
      * @memberof CharitySubscription
      */
     'created_at'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CharitySubscription
-     */
-    'sum': string;
-    /**
-     * 
-     * @type {number}
-     * @memberof CharitySubscription
-     */
-    'days': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CharitySubscription
-     */
-    'user': number;
 }
 

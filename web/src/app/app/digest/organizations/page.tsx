@@ -8,7 +8,7 @@ import { Organizations } from "@/widgets/organizations";
 
 export default function OrganizationsPage() {
   const router = useRouter();
-  const myCharity = useMyCharity()
+  const myCharity = useMyCharity();
 
   return (
     <div className="flex flex-col gap-4">
@@ -16,7 +16,7 @@ export default function OrganizationsPage() {
         <PageHeader
           top="Вы выбрали"
           middle={myCharity.data?.charity.name}
-          onClick={router.app}
+          onClick={router.digest}
         />
         <div className="text-secondary">
           Каждый день в 00:00 заработанные вами добрики будут перечисляться в

@@ -23,6 +23,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { CharitySubscription } from '../models';
+// @ts-ignore
+import { CreateCharitySubscription } from '../models';
 /**
  * CharitySubscriptionApi - axios parameter creator
  * @export
@@ -31,18 +33,14 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
-         * @param {CharitySubscription} data 
+         * @param {CreateCharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        charitySubscriptionApply: async (id: number, data: CharitySubscription, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('charitySubscriptionApply', 'id', id)
+        charitySubscriptionApply: async (data: CreateCharitySubscription, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'data' is not null or undefined
             assertParamExists('charitySubscriptionApply', 'data', data)
-            const localVarPath = `/charity-subscription/{id}/apply/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            const localVarPath = `/charity-subscription/apply/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -326,13 +324,12 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
-         * @param {CharitySubscription} data 
+         * @param {CreateCharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async charitySubscriptionApply(id: number, data: CharitySubscription, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CharitySubscription>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.charitySubscriptionApply(id, data, options);
+        async charitySubscriptionApply(data: CreateCharitySubscription, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.charitySubscriptionApply(data, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -414,8 +411,8 @@ export const CharitySubscriptionApiFactory = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        charitySubscriptionApply(requestParameters: CharitySubscriptionApiCharitySubscriptionApplyRequest, options?: AxiosRequestConfig): AxiosPromise<CharitySubscription> {
-            return localVarFp.charitySubscriptionApply(requestParameters.id, requestParameters.data, options).then((request) => request(axios, basePath));
+        charitySubscriptionApply(requestParameters: CharitySubscriptionApiCharitySubscriptionApplyRequest, options?: AxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.charitySubscriptionApply(requestParameters.data, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -481,18 +478,11 @@ export const CharitySubscriptionApiFactory = function (configuration?: Configura
  */
 export interface CharitySubscriptionApiCharitySubscriptionApplyRequest {
     /**
-     * A unique integer value identifying this Подписка на пожертвования.
-     * @type {number}
-     * @memberof CharitySubscriptionApiCharitySubscriptionApply
-     */
-    readonly id: number
-
-    /**
      * 
-     * @type {CharitySubscription}
+     * @type {CreateCharitySubscription}
      * @memberof CharitySubscriptionApiCharitySubscriptionApply
      */
-    readonly data: CharitySubscription
+    readonly data: CreateCharitySubscription
 }
 
 /**
@@ -615,7 +605,7 @@ export class CharitySubscriptionApi extends BaseAPI {
      * @memberof CharitySubscriptionApi
      */
     public charitySubscriptionApply(requestParameters: CharitySubscriptionApiCharitySubscriptionApplyRequest, options?: AxiosRequestConfig) {
-        return CharitySubscriptionApiFp(this.configuration).charitySubscriptionApply(requestParameters.id, requestParameters.data, options).then((request) => request(this.axios, this.basePath));
+        return CharitySubscriptionApiFp(this.configuration).charitySubscriptionApply(requestParameters.data, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

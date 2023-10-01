@@ -43,6 +43,12 @@ export interface Activity {
      * @type {string}
      * @memberof Activity
      */
+    'coeff': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Activity
+     */
     'description'?: string | null;
 }
 

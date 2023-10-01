@@ -17,56 +17,56 @@
 /**
  * 
  * @export
- * @interface Charity
+ * @interface ActivitySnapshot
  */
-export interface Charity {
+export interface ActivitySnapshot {
     /**
      * 
      * @type {number}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
     'id'?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Charity
+     * @type {number}
+     * @memberof ActivitySnapshot
      */
-    'organization_name': string;
+    'step_count'?: number;
     /**
      * 
      * @type {string}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
-    'name': string;
+    'distance': string;
     /**
      * 
-     * @type {boolean}
-     * @memberof Charity
+     * @type {number}
+     * @memberof ActivitySnapshot
      */
-    'is_active'?: boolean;
+    'time': number;
     /**
      * 
-     * @type {boolean}
-     * @memberof Charity
+     * @type {number}
+     * @memberof ActivitySnapshot
      */
-    'approved'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Charity
-     */
-    'description': string;
+    'found': number;
     /**
      * 
      * @type {string}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
-    'contact_email'?: string | null;
+    'kcal': string;
     /**
      * 
      * @type {string}
-     * @memberof Charity
+     * @memberof ActivitySnapshot
      */
-    'sum'?: string;
+    'created_at'?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ActivitySnapshot
+     */
+    'activity_type': number;
 }
 

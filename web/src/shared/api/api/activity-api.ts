@@ -23,6 +23,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { Activity } from '../models';
+// @ts-ignore
+import { ActivitySnapshot } from '../models';
 /**
  * ActivityApi - axios parameter creator
  * @export
@@ -220,6 +222,45 @@ export const ActivityApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @param {ActivitySnapshot} data 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        activitySnap: async (data: ActivitySnapshot, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'data' is not null or undefined
+            assertParamExists('activitySnap', 'data', data)
+            const localVarPath = `/activity/snap/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Basic required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(data, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {number} id A unique integer value identifying this Настройка активности.
          * @param {Activity} data 
          * @param {*} [options] Override http request option.
@@ -323,6 +364,16 @@ export const ActivityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {ActivitySnapshot} data 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async activitySnap(data: ActivitySnapshot, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ActivitySnapshot>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.activitySnap(data, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {number} id A unique integer value identifying this Настройка активности.
          * @param {Activity} data 
          * @param {*} [options] Override http request option.
@@ -385,6 +436,15 @@ export const ActivityApiFactory = function (configuration?: Configuration, baseP
          */
         activityRead(requestParameters: ActivityApiActivityReadRequest, options?: AxiosRequestConfig): AxiosPromise<Activity> {
             return localVarFp.activityRead(requestParameters.id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {ActivityApiActivitySnapRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        activitySnap(requestParameters: ActivityApiActivitySnapRequest, options?: AxiosRequestConfig): AxiosPromise<ActivitySnapshot> {
+            return localVarFp.activitySnap(requestParameters.data, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -459,6 +519,20 @@ export interface ActivityApiActivityReadRequest {
      * @memberof ActivityApiActivityRead
      */
     readonly id: number
+}
+
+/**
+ * Request parameters for activitySnap operation in ActivityApi.
+ * @export
+ * @interface ActivityApiActivitySnapRequest
+ */
+export interface ActivityApiActivitySnapRequest {
+    /**
+     * 
+     * @type {ActivitySnapshot}
+     * @memberof ActivityApiActivitySnap
+     */
+    readonly data: ActivitySnapshot
 }
 
 /**
@@ -541,6 +615,17 @@ export class ActivityApi extends BaseAPI {
      */
     public activityRead(requestParameters: ActivityApiActivityReadRequest, options?: AxiosRequestConfig) {
         return ActivityApiFp(this.configuration).activityRead(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {ActivityApiActivitySnapRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ActivityApi
+     */
+    public activitySnap(requestParameters: ActivityApiActivitySnapRequest, options?: AxiosRequestConfig) {
+        return ActivityApiFp(this.configuration).activitySnap(requestParameters.data, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

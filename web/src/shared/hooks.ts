@@ -42,6 +42,18 @@ export const useRouter = () => {
     // **
 
     feed: (id: number) => router.push(routes.feed(id)),
-    dobriki: () => router.push(routes.dobriki())
+    dobriki: () => router.push(routes.dobriki()),
+
+    // **
+
+    organization: () => router.push(routes.organization()),
+    organizationApproveForm: () =>
+      router.push(routes.organizationApproveForm()),
+
+    // **
+    dashboard: () => router.push(routes.dashboard()),
+    dashboardUsers: () => router.push(routes.dashboardUsers()),
+    dashboardStatistics: () => router.push(routes.dashboardStatistics()),
+    dashboardOrganizations: () => router.push(routes.dashboardOrganizations()),
   };
 };

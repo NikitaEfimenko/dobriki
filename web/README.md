@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# README.md
 
-## Getting Started
+# Tech Stack
 
-First, run the development server:
+This project utilizes the following technologies and frameworks:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Next.js**
+2. **Tailwind CSS**
+3. **React Query**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+These technologies work together to create a modern and efficient web application, combining the power of React with easy-to-use styling and efficient data management.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This repository contains the source code and documentation for an application that offers the following routes:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Form Routes
+- `/form`: Welcome page.
+  - `/form/auth`: Email input.
+    - `/form/auth/sended`: Email link sent.
+  - `/form/personal`: Weight, height, and age input.
+  - `/form/goal`: Goal for steps.
+  - `/form/organization`: Organization selection.
 
-## Learn More
+## App Routes
+- `/app`: Main application page.
+  - `/app/home`: Dashboard-like view.
+    - `/app/home/top-colleagues`: Top colleagues.
+  - `/app/statistics`: Statistics overview.
+  - `/app/activity`: Activities.
+  - `/app/digest`: Digest.
+    - `/app/organizations`: Organizations.
+  - `/app/profile`: User profile.
 
-To learn more about Next.js, take a look at the following resources:
+## Organization Routes
+- `/organization`: Organization section.
+  - `/organization/form`: Form for organizations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Dashboard Routes
+- `/dashboard`: Dashboard section.
+  - `/dashboard/organizations`: List of organizations.
+  - `/dashboard/statistics`: Statistics overview.
+  - `/dashboard/users`: User management.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+These routes are intended to provide a clear and organized structure for the application, facilitating navigation and usage for the end users. Each route corresponds to a specific feature or aspect of the application, contributing to a comprehensive user experience.

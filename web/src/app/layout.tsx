@@ -5,8 +5,6 @@ import Providers from "./providers";
 
 import { cn } from "@/shared/utils";
 import { Toaster } from "@/shared/ui/toaster";
-import Image from "next/image";
-import ImagePhonePreview from "../../public/phone-preview.png";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -65,9 +63,6 @@ export default async function RootLayout({
         <Providers>
           {children}
           <Toaster />
-          <div className="h-[100vh] w-[100vw] bg-background fixed top-0 left-0 z-[99999] overflow-hidden device-hidden">
-            <Image src={ImagePhonePreview} alt="" height={560} width={270} />
-          </div>
         </Providers>
       </body>
     </html>

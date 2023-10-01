@@ -8,17 +8,22 @@ import * as React from "react";
 
 interface TopColleaguesProps extends React.HTMLAttributes<HTMLDivElement> {
   limit?: number;
+  title?: string;
+  route?: null;
 }
 
 export const TopColleagues: React.FC<TopColleaguesProps> = ({
   limit = 5,
   className,
+  title = "Топ коллег",
+  route,
   ...attrs
 }) => {
   const { data = [] } = useTeams();
 
   return (
     <ListCard
+      className={className}
       items={data.slice(0, limit)}
       // FIXME: ONLINE PROP IS REQUIRED
       renderItem={({
@@ -48,8 +53,8 @@ export const TopColleagues: React.FC<TopColleaguesProps> = ({
           </ListItem>
         );
       }}
-      title="Топ коллег"
-      route="topColleagues"
+      title={title}
+      route={route === null ? undefined : "topColleagues"}
       {...attrs}
     />
   );
