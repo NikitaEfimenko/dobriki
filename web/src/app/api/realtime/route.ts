@@ -22,7 +22,7 @@ async function handler(
   const clientId = (session?.user as any)?.email;
   const client = new Ably.Rest(process.env.ABLY_API_KEY);
   try {
-    const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId });
+    const tokenRequestData = await client.auth.createTokenRequest({ clientId: clientId || "ANON" });
     return NextResponse.json(tokenRequestData, {
       status: 200
     })
