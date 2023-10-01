@@ -13,12 +13,13 @@ export const Organizations: React.FC<OrganizationsProps> = ({
   title = "Организации",
   ...attrs
 }) => {
-  const organizations = useCharities();
+  const { data: organizations } = useCharities();
   const myCharity = useMyCharity();
+
   return (
     <ListCard
       className={className}
-      items={organizations.data ?? []}
+      items={organizations}
       renderItem={({ id, name, description }) => (
         <ListItem
           key={id}

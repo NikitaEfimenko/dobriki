@@ -32,7 +32,7 @@ export function ListCard<T>({
         <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
       ))}
       <ListItems
-        items={items || []}
+        items={items}
         renderItem={renderItem}
         renderItems={renderItems}
       />

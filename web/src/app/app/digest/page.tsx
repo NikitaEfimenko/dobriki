@@ -13,7 +13,8 @@ import Image from "next/image";
 export default function DigestPage() {
   const router = useRouter();
   const { data, isLoading } = useFeeds();
-  const organizations = useCharities();
+  const { data: organizations } = useCharities();
+
   return (
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-6 rounded-t-none">
@@ -40,8 +41,8 @@ export default function DigestPage() {
         })}
       </div>
       <ListCard
-        items={(organizations?.data ?? []).slice(5)}
-        renderItem={({ id, name, description }) => (
+        items={organizations ? organizations.slice(0, 5) : undefined}
+        renderItem={({ name, id, description }) => (
           <ListItem key={id} title={name} description={description} />
         )}
         title="Топ организаций"
