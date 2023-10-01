@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 
 export const activities = {
-  run: (props: HTMLAttributes<SVGSVGElement>) => (
+  Бег: (props: HTMLAttributes<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -44,7 +44,7 @@ export const activities = {
       </defs>
     </svg>
   ),
-  skis: (props: HTMLAttributes<SVGSVGElement>) => (
+  Лыжи: (props: HTMLAttributes<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="66"
@@ -192,7 +192,7 @@ export const activities = {
       </defs>
     </svg>
   ),
-  bike: (props: HTMLAttributes<SVGSVGElement>) => (
+  Велосипед: (props: HTMLAttributes<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="64"
@@ -295,7 +295,7 @@ export const activities = {
       </defs>
     </svg>
   ),
-  step: (props: HTMLAttributes<SVGSVGElement>) => (
+  Ходьба: (props: HTMLAttributes<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="64"

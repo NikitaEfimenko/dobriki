@@ -61,24 +61,12 @@ export interface Charity {
      * @type {string}
      * @memberof Charity
      */
-    'contact_email': string;
+    'contact_email'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof Charity
      */
     'sum': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Charity
-     */
-    'got_sum': string;
-    /**
-     * 
-     * @type {Set<number>}
-     * @memberof Charity
-     */
-    'users'?: Set<number>;
 }
 

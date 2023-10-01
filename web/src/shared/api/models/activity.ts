@@ -37,7 +37,7 @@ export interface Activity {
      * @type {string}
      * @memberof Activity
      */
-    'coefficient'?: string;
+    'type': ActivityTypeEnum;
     /**
      * 
      * @type {string}
@@ -45,4 +45,15 @@ export interface Activity {
      */
     'description'?: string | null;
 }
+
+export const ActivityTypeEnum = {
+    Step: 'STEP',
+    Ski: 'SKI',
+    Running: 'RUNNING',
+    Bycycle: 'BYCYCLE',
+    Found: 'FOUND'
+} as const;
+
+export type ActivityTypeEnum = typeof ActivityTypeEnum[keyof typeof ActivityTypeEnum];
+
 

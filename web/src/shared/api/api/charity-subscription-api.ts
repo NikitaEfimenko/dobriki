@@ -31,7 +31,7 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -113,7 +113,7 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -193,7 +193,7 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -236,7 +236,7 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -273,7 +273,7 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -326,7 +326,7 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -347,7 +347,7 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -368,7 +368,7 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -379,7 +379,7 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -389,7 +389,7 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this Связь пользователя с фондом.
+         * @param {number} id A unique integer value identifying this Подписка на пожертвования.
          * @param {CharitySubscription} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -481,7 +481,7 @@ export const CharitySubscriptionApiFactory = function (configuration?: Configura
  */
 export interface CharitySubscriptionApiCharitySubscriptionApplyRequest {
     /**
-     * A unique integer value identifying this Связь пользователя с фондом.
+     * A unique integer value identifying this Подписка на пожертвования.
      * @type {number}
      * @memberof CharitySubscriptionApiCharitySubscriptionApply
      */
@@ -516,7 +516,7 @@ export interface CharitySubscriptionApiCharitySubscriptionCreateRequest {
  */
 export interface CharitySubscriptionApiCharitySubscriptionDeleteRequest {
     /**
-     * A unique integer value identifying this Связь пользователя с фондом.
+     * A unique integer value identifying this Подписка на пожертвования.
      * @type {number}
      * @memberof CharitySubscriptionApiCharitySubscriptionDelete
      */
@@ -551,7 +551,7 @@ export interface CharitySubscriptionApiCharitySubscriptionListRequest {
  */
 export interface CharitySubscriptionApiCharitySubscriptionPartialUpdateRequest {
     /**
-     * A unique integer value identifying this Связь пользователя с фондом.
+     * A unique integer value identifying this Подписка на пожертвования.
      * @type {number}
      * @memberof CharitySubscriptionApiCharitySubscriptionPartialUpdate
      */
@@ -572,7 +572,7 @@ export interface CharitySubscriptionApiCharitySubscriptionPartialUpdateRequest {
  */
 export interface CharitySubscriptionApiCharitySubscriptionReadRequest {
     /**
-     * A unique integer value identifying this Связь пользователя с фондом.
+     * A unique integer value identifying this Подписка на пожертвования.
      * @type {number}
      * @memberof CharitySubscriptionApiCharitySubscriptionRead
      */
@@ -586,7 +586,7 @@ export interface CharitySubscriptionApiCharitySubscriptionReadRequest {
  */
 export interface CharitySubscriptionApiCharitySubscriptionUpdateRequest {
     /**
-     * A unique integer value identifying this Связь пользователя с фондом.
+     * A unique integer value identifying this Подписка на пожертвования.
      * @type {number}
      * @memberof CharitySubscriptionApiCharitySubscriptionUpdate
      */

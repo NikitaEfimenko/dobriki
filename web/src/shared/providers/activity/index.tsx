@@ -9,11 +9,11 @@ import React, {
   useState,
 } from "react";
 
-export const activityColors = {
-  run: "hsla(339, 76%, 59%, 1)",
-  skis: "hsla(207, 91%, 64%, 1)",
-  bike: "hsla(228, 94%, 67%, 1)",
-  step: "hsla(27, 98%, 54%, 1)",
+export const activityColors: Record<ActivityKeys, string> = {
+  Бег: "hsla(339, 76%, 59%, 1)",
+  Лыжи: "hsla(207, 91%, 64%, 1)",
+  Велосипед: "hsla(228, 94%, 67%, 1)",
+  Ходьба: "hsla(27, 98%, 54%, 1)",
 };
 
 type ContextType = {

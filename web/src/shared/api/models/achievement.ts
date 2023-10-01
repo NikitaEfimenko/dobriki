@@ -39,18 +39,6 @@ export interface Achievement {
      */
     'description': string;
     /**
-     * Введите срок в формате дни:часы:минуты
-     * @type {string}
-     * @memberof Achievement
-     */
-    'time_limit': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Achievement
-     */
-    'image'?: string | null;
-    /**
      * Минимальное значение (например, минуты тренировки или километры пробега)
      * @type {number}
      * @memberof Achievement

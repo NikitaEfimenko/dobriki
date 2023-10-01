@@ -70,7 +70,7 @@ export const CharityApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -140,7 +140,7 @@ export const CharityApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {Charity} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -183,7 +183,7 @@ export const CharityApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -220,7 +220,7 @@ export const CharityApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {Charity} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -283,7 +283,7 @@ export const CharityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -302,7 +302,7 @@ export const CharityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {Charity} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -313,7 +313,7 @@ export const CharityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -323,7 +323,7 @@ export const CharityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this charity.
+         * @param {number} id A unique integer value identifying this Фонд.
          * @param {Charity} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -419,7 +419,7 @@ export interface CharityApiCharityCreateRequest {
  */
 export interface CharityApiCharityDeleteRequest {
     /**
-     * A unique integer value identifying this charity.
+     * A unique integer value identifying this Фонд.
      * @type {number}
      * @memberof CharityApiCharityDelete
      */
@@ -433,7 +433,7 @@ export interface CharityApiCharityDeleteRequest {
  */
 export interface CharityApiCharityPartialUpdateRequest {
     /**
-     * A unique integer value identifying this charity.
+     * A unique integer value identifying this Фонд.
      * @type {number}
      * @memberof CharityApiCharityPartialUpdate
      */
@@ -454,7 +454,7 @@ export interface CharityApiCharityPartialUpdateRequest {
  */
 export interface CharityApiCharityReadRequest {
     /**
-     * A unique integer value identifying this charity.
+     * A unique integer value identifying this Фонд.
      * @type {number}
      * @memberof CharityApiCharityRead
      */
@@ -468,7 +468,7 @@ export interface CharityApiCharityReadRequest {
  */
 export interface CharityApiCharityUpdateRequest {
     /**
-     * A unique integer value identifying this charity.
+     * A unique integer value identifying this Фонд.
      * @type {number}
      * @memberof CharityApiCharityUpdate
      */

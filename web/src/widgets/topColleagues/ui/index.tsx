@@ -1,5 +1,5 @@
+import { useTeams } from "@/entities/feeds/api";
 import { ListCard } from "@/entities/listCard";
-import { topColleagues } from "@/features/listItems/config";
 import { ListItem } from "@/shared/ui/list-item";
 import { OnlineBadge } from "@/shared/ui/online-badge";
 import { nullable } from "@/shared/utils";
@@ -15,27 +15,39 @@ export const TopColleagues: React.FC<TopColleaguesProps> = ({
   className,
   ...attrs
 }) => {
+  const { data = [] } = useTeams();
+
   return (
     <ListCard
-      items={topColleagues.slice(limit)}
-      renderItem={({ id, title, description, online }) => (
-        <ListItem
-          key={id}
-          title={title}
-          description={description}
-          renderImage={() => (
-            <Avatar
-              // isBordered
-              // color="success"
-              src="https://i.pravatar.cc/150?u=a04258114e29026302d"
-            />
-          )}
-        >
-          {nullable(online, () => (
-            <OnlineBadge />
-          ))}
-        </ListItem>
-      )}
+      items={data.slice(0, limit)}
+      // FIXME: ONLINE PROP IS REQUIRED
+      renderItem={({
+        username,
+        email,
+        first_name,
+        last_name,
+        online = true,
+      }) => {
+        const title = first_name ? `${first_name} ${last_name}` : username;
+        return (
+          <ListItem
+            key={email}
+            title={title}
+            description={username}
+            renderImage={() => (
+              <Avatar
+                // isBordered
+                // color="success"
+                src="https://i.pravatar.cc/150?u=a04258114e29026302d"
+              />
+            )}
+          >
+            {nullable(online, () => (
+              <OnlineBadge />
+            ))}
+          </ListItem>
+        );
+      }}
       title="Топ коллег"
       route="topColleagues"
       {...attrs}

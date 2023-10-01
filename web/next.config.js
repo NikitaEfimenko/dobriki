@@ -28,7 +28,7 @@ const nextConfig = {
     ]
   },
   images: {
-    domains: ['https://i.pravatar.cc']
+    domains: ['https://i.pravatar.cc', '94.241.175.55']
   }
 }
 

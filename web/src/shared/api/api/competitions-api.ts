@@ -33,7 +33,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -115,7 +115,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -185,7 +185,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -228,7 +228,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -265,7 +265,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -308,7 +308,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * Вступить в команду `obj`.
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -384,7 +384,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -454,7 +454,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {UserTeam} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -497,7 +497,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -534,7 +534,7 @@ export const CompetitionsApiAxiosParamCreator = function (configuration?: Config
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {UserTeam} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -587,7 +587,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -608,7 +608,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -627,7 +627,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -638,7 +638,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -648,7 +648,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this personal competition.
+         * @param {number} id A unique integer value identifying this Пользовательское соревнование.
          * @param {PersonalCompetition} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -659,7 +659,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * Вступить в команду `obj`.
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -679,7 +679,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -698,7 +698,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {UserTeam} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -709,7 +709,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -719,7 +719,7 @@ export const CompetitionsApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this user team.
+         * @param {number} id A unique integer value identifying this Команда.
          * @param {UserTeam} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -872,7 +872,7 @@ export const CompetitionsApiFactory = function (configuration?: Configuration, b
  */
 export interface CompetitionsApiCompetitionsPersonalApplyRequest {
     /**
-     * A unique integer value identifying this personal competition.
+     * A unique integer value identifying this Пользовательское соревнование.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsPersonalApply
      */
@@ -907,7 +907,7 @@ export interface CompetitionsApiCompetitionsPersonalCreateRequest {
  */
 export interface CompetitionsApiCompetitionsPersonalDeleteRequest {
     /**
-     * A unique integer value identifying this personal competition.
+     * A unique integer value identifying this Пользовательское соревнование.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsPersonalDelete
      */
@@ -921,7 +921,7 @@ export interface CompetitionsApiCompetitionsPersonalDeleteRequest {
  */
 export interface CompetitionsApiCompetitionsPersonalPartialUpdateRequest {
     /**
-     * A unique integer value identifying this personal competition.
+     * A unique integer value identifying this Пользовательское соревнование.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsPersonalPartialUpdate
      */
@@ -942,7 +942,7 @@ export interface CompetitionsApiCompetitionsPersonalPartialUpdateRequest {
  */
 export interface CompetitionsApiCompetitionsPersonalReadRequest {
     /**
-     * A unique integer value identifying this personal competition.
+     * A unique integer value identifying this Пользовательское соревнование.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsPersonalRead
      */
@@ -956,7 +956,7 @@ export interface CompetitionsApiCompetitionsPersonalReadRequest {
  */
 export interface CompetitionsApiCompetitionsPersonalUpdateRequest {
     /**
-     * A unique integer value identifying this personal competition.
+     * A unique integer value identifying this Пользовательское соревнование.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsPersonalUpdate
      */
@@ -977,7 +977,7 @@ export interface CompetitionsApiCompetitionsPersonalUpdateRequest {
  */
 export interface CompetitionsApiCompetitionsTeamsApplyRequest {
     /**
-     * A unique integer value identifying this user team.
+     * A unique integer value identifying this Команда.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsTeamsApply
      */
@@ -1005,7 +1005,7 @@ export interface CompetitionsApiCompetitionsTeamsCreateRequest {
  */
 export interface CompetitionsApiCompetitionsTeamsDeleteRequest {
     /**
-     * A unique integer value identifying this user team.
+     * A unique integer value identifying this Команда.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsTeamsDelete
      */
@@ -1019,7 +1019,7 @@ export interface CompetitionsApiCompetitionsTeamsDeleteRequest {
  */
 export interface CompetitionsApiCompetitionsTeamsPartialUpdateRequest {
     /**
-     * A unique integer value identifying this user team.
+     * A unique integer value identifying this Команда.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsTeamsPartialUpdate
      */
@@ -1040,7 +1040,7 @@ export interface CompetitionsApiCompetitionsTeamsPartialUpdateRequest {
  */
 export interface CompetitionsApiCompetitionsTeamsReadRequest {
     /**
-     * A unique integer value identifying this user team.
+     * A unique integer value identifying this Команда.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsTeamsRead
      */
@@ -1054,7 +1054,7 @@ export interface CompetitionsApiCompetitionsTeamsReadRequest {
  */
 export interface CompetitionsApiCompetitionsTeamsUpdateRequest {
     /**
-     * A unique integer value identifying this user team.
+     * A unique integer value identifying this Команда.
      * @type {number}
      * @memberof CompetitionsApiCompetitionsTeamsUpdate
      */

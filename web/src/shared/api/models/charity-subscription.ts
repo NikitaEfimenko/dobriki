@@ -40,6 +40,12 @@ export interface CharitySubscription {
      * @type {string}
      * @memberof CharitySubscription
      */
+    'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CharitySubscription
+     */
     'sum': string;
     /**
      * 
@@ -47,12 +53,6 @@ export interface CharitySubscription {
      * @memberof CharitySubscription
      */
     'days': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof CharitySubscription
-     */
-    'created_at'?: string;
     /**
      * 
      * @type {number}

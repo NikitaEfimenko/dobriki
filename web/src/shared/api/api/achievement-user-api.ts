@@ -31,49 +31,6 @@ export const AchievementUserApiAxiosParamCreator = function (configuration?: Con
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Достижение пользователя.
-         * @param {UserAchievement} data 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        achievementUserApply: async (id: number, data: UserAchievement, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('achievementUserApply', 'id', id)
-            // verify required parameter 'data' is not null or undefined
-            assertParamExists('achievementUserApply', 'data', data)
-            const localVarPath = `/achievement-user/{id}/apply/`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Basic required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(data, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {UserAchievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -316,17 +273,6 @@ export const AchievementUserApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {number} id A unique integer value identifying this Достижение пользователя.
-         * @param {UserAchievement} data 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async achievementUserApply(id: number, data: UserAchievement, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserAchievement>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.achievementUserApply(id, data, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @param {UserAchievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -398,15 +344,6 @@ export const AchievementUserApiFactory = function (configuration?: Configuration
     return {
         /**
          * 
-         * @param {AchievementUserApiAchievementUserApplyRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        achievementUserApply(requestParameters: AchievementUserApiAchievementUserApplyRequest, options?: AxiosRequestConfig): AxiosPromise<UserAchievement> {
-            return localVarFp.achievementUserApply(requestParameters.id, requestParameters.data, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {AchievementUserApiAchievementUserCreateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -460,27 +397,6 @@ export const AchievementUserApiFactory = function (configuration?: Configuration
         },
     };
 };
-
-/**
- * Request parameters for achievementUserApply operation in AchievementUserApi.
- * @export
- * @interface AchievementUserApiAchievementUserApplyRequest
- */
-export interface AchievementUserApiAchievementUserApplyRequest {
-    /**
-     * A unique integer value identifying this Достижение пользователя.
-     * @type {number}
-     * @memberof AchievementUserApiAchievementUserApply
-     */
-    readonly id: number
-
-    /**
-     * 
-     * @type {UserAchievement}
-     * @memberof AchievementUserApiAchievementUserApply
-     */
-    readonly data: UserAchievement
-}
 
 /**
  * Request parameters for achievementUserCreate operation in AchievementUserApi.
@@ -573,17 +489,6 @@ export interface AchievementUserApiAchievementUserUpdateRequest {
  * @extends {BaseAPI}
  */
 export class AchievementUserApi extends BaseAPI {
-    /**
-     * 
-     * @param {AchievementUserApiAchievementUserApplyRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AchievementUserApi
-     */
-    public achievementUserApply(requestParameters: AchievementUserApiAchievementUserApplyRequest, options?: AxiosRequestConfig) {
-        return AchievementUserApiFp(this.configuration).achievementUserApply(requestParameters.id, requestParameters.data, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @param {AchievementUserApiAchievementUserCreateRequest} requestParameters Request parameters.

@@ -1,5 +1,6 @@
 .gitignore
 .npmignore
+.openapi-generator-ignore
 api.ts
 api/achievement-api.ts
 api/achievement-user-api.ts
@@ -9,7 +10,6 @@ api/charity-api.ts
 api/charity-subscription-api.ts
 api/competitions-api.ts
 api/feed-api.ts
-api/transfer-money-api.ts
 base.ts
 common.ts
 configuration.ts

@@ -1,7 +1,7 @@
 "use client";
 
+import { useTeams } from "@/entities/feeds/api";
 import { ListItems } from "@/features/listItems";
-import { topColleagues } from "@/features/listItems/config";
 import { PageHeader } from "@/features/pageHeader";
 import { useRouter } from "@/shared/hooks";
 import { Card } from "@/shared/ui/card";
@@ -11,18 +11,29 @@ import { nullable } from "@/shared/utils";
 
 export default function TopColleaguesPage() {
   const router = useRouter();
+  const { data = [] } = useTeams();
+
   return (
     <Card shadow={false} className="flex flex-col gap-8">
       <PageHeader top="Топ коллег" onClick={router.home} />
       <ListItems
-        items={topColleagues}
-        renderItem={({ id, title, description, online }) => (
-          <ListItem key={id} title={title} description={description}>
-            {nullable(online, () => (
-              <OnlineBadge />
-            ))}
-          </ListItem>
-        )}
+        items={data}
+        renderItem={({
+          username,
+          email,
+          first_name,
+          last_name,
+          online = true,
+        }) => {
+          const title = first_name ? `${first_name} ${last_name}` : username;
+          return (
+            <ListItem key={email} title={title} description={username}>
+              {nullable(online, () => (
+                <OnlineBadge />
+              ))}
+            </ListItem>
+          );
+        }}
       />
     </Card>
   );

@@ -70,7 +70,7 @@ export const AchievementApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -140,7 +140,7 @@ export const AchievementApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {Achievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -183,7 +183,7 @@ export const AchievementApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -220,7 +220,7 @@ export const AchievementApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {Achievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -283,7 +283,7 @@ export const AchievementApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -302,7 +302,7 @@ export const AchievementApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {Achievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -313,7 +313,7 @@ export const AchievementApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -323,7 +323,7 @@ export const AchievementApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {number} id A unique integer value identifying this achievement.
+         * @param {number} id A unique integer value identifying this Достижение.
          * @param {Achievement} data 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -419,7 +419,7 @@ export interface AchievementApiAchievementCreateRequest {
  */
 export interface AchievementApiAchievementDeleteRequest {
     /**
-     * A unique integer value identifying this achievement.
+     * A unique integer value identifying this Достижение.
      * @type {number}
      * @memberof AchievementApiAchievementDelete
      */
@@ -433,7 +433,7 @@ export interface AchievementApiAchievementDeleteRequest {
  */
 export interface AchievementApiAchievementPartialUpdateRequest {
     /**
-     * A unique integer value identifying this achievement.
+     * A unique integer value identifying this Достижение.
      * @type {number}
      * @memberof AchievementApiAchievementPartialUpdate
      */
@@ -454,7 +454,7 @@ export interface AchievementApiAchievementPartialUpdateRequest {
  */
 export interface AchievementApiAchievementReadRequest {
     /**
-     * A unique integer value identifying this achievement.
+     * A unique integer value identifying this Достижение.
      * @type {number}
      * @memberof AchievementApiAchievementRead
      */
@@ -468,7 +468,7 @@ export interface AchievementApiAchievementReadRequest {
  */
 export interface AchievementApiAchievementUpdateRequest {
     /**
-     * A unique integer value identifying this achievement.
+     * A unique integer value identifying this Достижение.
      * @type {number}
      * @memberof AchievementApiAchievementUpdate
      */
