@@ -34,8 +34,10 @@ export const ActivityProvider: FC<{ children: ReactNode }> = ({ children }) => {
   >();
 
   const setPreview = useCallback((activity?: ActivityKeys) => {
-    if (!activity) return;
     setActivity((prev) => {
+      if (!activity) {
+        return undefined;
+      }
       if (prev?.activity === activity) {
         return undefined;
       }

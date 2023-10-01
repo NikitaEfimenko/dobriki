@@ -14,8 +14,29 @@
 
 
 
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
+/**
+ * 
+ * @export
+ * @interface Login
+ */
+export interface Login {
+    /**
+     * 
+     * @type {string}
+     * @memberof Login
+     */
+    'username'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Login
+     */
+    'email'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Login
+     */
+    'password': string;
+}
 

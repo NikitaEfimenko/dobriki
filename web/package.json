@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "swagger": "npx @openapitools/openapi-generator-cli generate -i http://localhost:8000/swagger?format=openapi -g typescript-axios -o ./src/shared/api/ --skip-validate-spec --additional-properties=useSingleRequestParameter=true,withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api",
+    "swagger": "npx @openapitools/openapi-generator-cli generate -i http://94.241.175.55/swagger?format=openapi -g typescript-axios -o ./src/shared/api/ --skip-validate-spec --additional-properties=useSingleRequestParameter=true,withSeparateModelsAndApi=true,modelPackage=models,apiPackage=api",
     "ionic": "npx ionic",
     "sw": "tsc ./src/config/service-worker.ts --outDir ./public"
   },

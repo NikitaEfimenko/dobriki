@@ -14,8 +14,29 @@
 
 
 
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
+/**
+ * 
+ * @export
+ * @interface ArticleTag
+ */
+export interface ArticleTag {
+    /**
+     * 
+     * @type {number}
+     * @memberof ArticleTag
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleTag
+     */
+    'slug': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleTag
+     */
+    'name': string;
+}
 

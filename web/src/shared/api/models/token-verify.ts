@@ -14,8 +14,17 @@
 
 
 
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
+/**
+ * 
+ * @export
+ * @interface TokenVerify
+ */
+export interface TokenVerify {
+    /**
+     * 
+     * @type {string}
+     * @memberof TokenVerify
+     */
+    'token': string;
+}
 

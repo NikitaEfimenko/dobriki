@@ -14,8 +14,23 @@
 
 
 
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
+/**
+ * 
+ * @export
+ * @interface CookieTokenRefresh
+ */
+export interface CookieTokenRefresh {
+    /**
+     * WIll override cookie.
+     * @type {string}
+     * @memberof CookieTokenRefresh
+     */
+    'refresh'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CookieTokenRefresh
+     */
+    'access'?: string;
+}
 
