@@ -18,9 +18,7 @@ import { useRouter } from "@/shared/hooks";
 import { FloatingButton } from "@/shared/ui/floating-button";
 
 const formSchema = z.object({
-  goal: z.string().min(2, {
-    message: "сдует",
-  }),
+  goal: z.string(),
 });
 
 export default function GoalFormPage() {
@@ -57,7 +55,12 @@ export default function GoalFormPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input label="Количество шагов" {...field} type="number" />
+                    <Input
+                      required
+                      label="Количество шагов"
+                      {...field}
+                      type="number"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -15,15 +15,9 @@ import * as z from "zod";
 import { useRouter } from "@/shared/hooks";
 
 const formSchema = z.object({
-  title: z.string().min(2, {
-    message: "сдует",
-  }),
-  description: z.string().min(3, {
-    message: "коротковат",
-  }),
-  email: z.string().min(2, {
-    message: "маловат",
-  }),
+  title: z.string(),
+  description: z.string(),
+  email: z.string(),
 });
 
 export default function OrganizationFormPage() {
@@ -84,7 +78,7 @@ export default function OrganizationFormPage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input label="Название " {...field} />
+                      <Input label="Название " required {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -96,7 +90,7 @@ export default function OrganizationFormPage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input label="Описание" {...field} />
+                      <Input label="Описание" required {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -108,7 +102,7 @@ export default function OrganizationFormPage() {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input label="Электронная почта" {...field} />
+                      <Input label="Электронная почта" required {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
