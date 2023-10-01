@@ -32,10 +32,10 @@ const nextConfig = {
   }
 }
 
-// module.exports = withPWA({
-//   ...nextConfig,
-//   reactStrictMode: false,
-//   swcMinify: false,
-// })
+module.exports = withPWA({
+  ...nextConfig,
+  reactStrictMode: false,
+  swcMinify: false,
+})
 
 module.exports = nextConfig

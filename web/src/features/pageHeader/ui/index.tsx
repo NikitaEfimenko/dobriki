@@ -26,7 +26,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       <ActivityDrover
         color={color}
         activity={activity}
-        description={`Прошли ${activitiesValues?.stepCount ?? 0} шагов (${activitiesValues?.distance / 1000} км)`}
+        description={`Прошли ${activitiesValues?.stepCount?. toFixed(2) ?? 0} шагов (${activitiesValues?.distance / 1000} км)`}
       />
       <div className="flex flex-col gap-2">
         <div className="h-8">
