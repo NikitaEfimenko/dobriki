@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { NavbarItems } from "@/features/navbarItems";
 import { cn } from "@/shared/utils";
