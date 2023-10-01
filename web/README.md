@@ -3,6 +3,13 @@
 - [Website Link](https://dobriki.vercel.app/form/)
 
 
+## Instruction
+
+**dev mode**
+
+1. `npm i`
+2. `npm run dev`
+
 ## Tech Stack
 
 This project utilizes the following technologies and frameworks:
