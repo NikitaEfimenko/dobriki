@@ -38,4 +38,4 @@ module.exports = withPWA({
   swcMinify: false,
 })
 
-module.exports = nextConfig
+// module.exports = nextConfig
