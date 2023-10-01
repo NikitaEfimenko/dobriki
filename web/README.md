@@ -1,5 +1,9 @@
+# Web resources
 
-# Tech Stack
+- [Website Link](https://dobriki.vercel.app/form/)
+
+
+## Tech Stack
 
 This project utilizes the following technologies and frameworks:
 
