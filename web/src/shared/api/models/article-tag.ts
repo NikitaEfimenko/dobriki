@@ -14,13 +14,29 @@
 
 
 
-export * from './api/achievement-api';
-export * from './api/achievement-user-api';
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/charity-api';
-export * from './api/charity-subscription-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
-export * from './api/transfer-money-api';
+/**
+ * 
+ * @export
+ * @interface ArticleTag
+ */
+export interface ArticleTag {
+    /**
+     * 
+     * @type {number}
+     * @memberof ArticleTag
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleTag
+     */
+    'slug': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ArticleTag
+     */
+    'name': string;
+}
 
