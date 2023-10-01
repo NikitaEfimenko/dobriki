@@ -1,7 +1,6 @@
 .gitignore
 .npmignore
 api.ts
-<<<<<<< HEAD
 api/achievement-api.ts
 api/achievement-user-api.ts
 api/activity-api.ts
@@ -11,21 +10,12 @@ api/charity-subscription-api.ts
 api/competitions-api.ts
 api/feed-api.ts
 api/transfer-money-api.ts
-=======
-api/activity-api.ts
-api/auth-api.ts
-api/competitions-api.ts
-api/feed-api.ts
->>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 base.ts
 common.ts
 configuration.ts
 git_push.sh
 index.ts
-<<<<<<< HEAD
 models/achievement.ts
-=======
->>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 models/activity.ts
 models/article-author.ts
 models/article-category-preview.ts
@@ -33,11 +23,8 @@ models/article-category.ts
 models/article-preview.ts
 models/article-tag.ts
 models/article.ts
-<<<<<<< HEAD
 models/charity-subscription.ts
 models/charity.ts
-=======
->>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 models/cookie-token-refresh.ts
 models/feed-articles-list200-response.ts
 models/index.ts
@@ -46,9 +33,6 @@ models/member.ts
 models/personal-competition.ts
 models/register.ts
 models/token-verify.ts
-<<<<<<< HEAD
 models/user-achievement.ts
-=======
->>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 models/user-details.ts
 models/user-team.ts

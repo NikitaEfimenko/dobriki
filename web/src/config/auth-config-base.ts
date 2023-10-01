@@ -85,7 +85,7 @@ export const authOptions =
       },
       // Since we're using Django as the backend we have to pass the JWT
       // token to the client instead of the `session`.
-      async session({ token }) {
+      async session({ token, user }) {
         return token as unknown as DefaultSession;
       },
     }

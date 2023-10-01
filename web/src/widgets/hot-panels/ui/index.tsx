@@ -1,27 +1,20 @@
 import { Panel } from "@/entities/panel";
+import { UserCharityPanel } from "@/features/userCharity/ui";
 import { IconChevronRight } from "@/icons";
-import { IconHomeSmile } from "@/icons/home-smile";
 import { IconDobrik } from "@/icons/dobrik";
-import { routes } from "@/shared/routes";
+import { useRouter } from "@/shared/hooks";
 
 export const HotPanels = () => {
+  const router = useRouter()
   return (
     <div className="flex flex-col gap-3">
-      <Panel
-        variant="primary"
-        size="tiny"
-        renderIcon={() => <IconHomeSmile />}
-        renderTrigger={() => (
-          <IconChevronRight onClick={routes.organizations} />
-        )}
-      >
-        Выбрано &quot;Дари добно&ldquo;
-      </Panel>
+      <UserCharityPanel/>
       <Panel
         variant="secondary"
+        onClick={router.dobriki}
         size="tiny"
         renderIcon={() => <IconDobrik />}
-        renderTrigger={() => <IconChevronRight onClick={routes.dobriki} />}
+        renderTrigger={() => <IconChevronRight />}
       >
         Сегодня вы заработали 93 добрика
       </Panel>

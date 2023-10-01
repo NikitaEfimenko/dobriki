@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { Charity } from './charity';
 
 /**
  * 
@@ -26,6 +29,12 @@ export interface CharitySubscription {
      * @memberof CharitySubscription
      */
     'id'?: number;
+    /**
+     * 
+     * @type {Charity}
+     * @memberof CharitySubscription
+     */
+    'charity': Charity;
     /**
      * 
      * @type {string}
@@ -50,11 +59,5 @@ export interface CharitySubscription {
      * @memberof CharitySubscription
      */
     'user': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof CharitySubscription
-     */
-    'charity': number;
 }
 

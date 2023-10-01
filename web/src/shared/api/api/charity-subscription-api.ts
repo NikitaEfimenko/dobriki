@@ -150,10 +150,12 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
         },
         /**
          * 
+         * @param {string} [userId] user__id
+         * @param {string} [userId2] user_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        charitySubscriptionList: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        charitySubscriptionList: async (userId?: string, userId2?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/charity-subscription/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -169,6 +171,14 @@ export const CharitySubscriptionApiAxiosParamCreator = function (configuration?:
             // authentication Basic required
             // http basic authentication required
             setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            if (userId !== undefined) {
+                localVarQueryParameter['user__id'] = userId;
+            }
+
+            if (userId2 !== undefined) {
+                localVarQueryParameter['user_id'] = userId2;
+            }
 
 
     
@@ -347,11 +357,13 @@ export const CharitySubscriptionApiFp = function(configuration?: Configuration) 
         },
         /**
          * 
+         * @param {string} [userId] user__id
+         * @param {string} [userId2] user_id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async charitySubscriptionList(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CharitySubscription>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.charitySubscriptionList(options);
+        async charitySubscriptionList(userId?: string, userId2?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<CharitySubscription>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.charitySubscriptionList(userId, userId2, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -425,11 +437,12 @@ export const CharitySubscriptionApiFactory = function (configuration?: Configura
         },
         /**
          * 
+         * @param {CharitySubscriptionApiCharitySubscriptionListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        charitySubscriptionList(options?: AxiosRequestConfig): AxiosPromise<Array<CharitySubscription>> {
-            return localVarFp.charitySubscriptionList(options).then((request) => request(axios, basePath));
+        charitySubscriptionList(requestParameters: CharitySubscriptionApiCharitySubscriptionListRequest = {}, options?: AxiosRequestConfig): AxiosPromise<Array<CharitySubscription>> {
+            return localVarFp.charitySubscriptionList(requestParameters.userId, requestParameters.userId2, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -508,6 +521,27 @@ export interface CharitySubscriptionApiCharitySubscriptionDeleteRequest {
      * @memberof CharitySubscriptionApiCharitySubscriptionDelete
      */
     readonly id: number
+}
+
+/**
+ * Request parameters for charitySubscriptionList operation in CharitySubscriptionApi.
+ * @export
+ * @interface CharitySubscriptionApiCharitySubscriptionListRequest
+ */
+export interface CharitySubscriptionApiCharitySubscriptionListRequest {
+    /**
+     * user__id
+     * @type {string}
+     * @memberof CharitySubscriptionApiCharitySubscriptionList
+     */
+    readonly userId?: string
+
+    /**
+     * user_id
+     * @type {string}
+     * @memberof CharitySubscriptionApiCharitySubscriptionList
+     */
+    readonly userId2?: string
 }
 
 /**
@@ -608,12 +642,13 @@ export class CharitySubscriptionApi extends BaseAPI {
 
     /**
      * 
+     * @param {CharitySubscriptionApiCharitySubscriptionListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CharitySubscriptionApi
      */
-    public charitySubscriptionList(options?: AxiosRequestConfig) {
-        return CharitySubscriptionApiFp(this.configuration).charitySubscriptionList(options).then((request) => request(this.axios, this.basePath));
+    public charitySubscriptionList(requestParameters: CharitySubscriptionApiCharitySubscriptionListRequest = {}, options?: AxiosRequestConfig) {
+        return CharitySubscriptionApiFp(this.configuration).charitySubscriptionList(requestParameters.userId, requestParameters.userId2, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

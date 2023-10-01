@@ -14,7 +14,6 @@
 
 
 
-<<<<<<< HEAD
 export * from './api/achievement-api';
 export * from './api/achievement-user-api';
 export * from './api/activity-api';
@@ -24,10 +23,4 @@ export * from './api/charity-subscription-api';
 export * from './api/competitions-api';
 export * from './api/feed-api';
 export * from './api/transfer-money-api';
-=======
-export * from './api/activity-api';
-export * from './api/auth-api';
-export * from './api/competitions-api';
-export * from './api/feed-api';
->>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 

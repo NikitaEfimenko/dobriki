@@ -42,5 +42,6 @@ export const useRouter = () => {
     // **
 
     feed: (id: number) => router.push(routes.feed(id)),
+    dobriki: () => router.push(routes.dobriki())
   };
 };

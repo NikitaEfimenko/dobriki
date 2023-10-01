@@ -1,5 +1,7 @@
+import { useCharities } from "@/entities/charity/hooks";
 import { ListCard } from "@/entities/listCard";
 import { organizations } from "@/features/listItems/config";
+import { useMyCharity } from "@/features/userCharity";
 import { ListItem } from "@/shared/ui/list-item";
 import * as React from "react";
 
@@ -9,15 +11,17 @@ export const Organizations: React.FC<OrganizationsProps> = ({
   className,
   ...attrs
 }) => {
+  const organizations = useCharities()
+  const myCharity = useMyCharity()
   return (
     <ListCard
-      items={organizations}
-      renderItem={({ id, title, description, selected }) => (
+      items={organizations.data ?? []}
+      renderItem={({ id, name, description }) => (
         <ListItem
           key={id}
-          title={title}
+          title={name}
           description={description}
-          selected={selected}
+          selected={myCharity.data?.charity.id === id}
         />
       )}
       title="Организации"
