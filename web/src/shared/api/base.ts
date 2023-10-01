@@ -19,7 +19,7 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
-export const BASE_PATH = "http://94.241.175.55/api".replace(/\/+$/, "");
+export const BASE_PATH = "/backend/api".replace(/\/+$/, "");
 
 /**
  *

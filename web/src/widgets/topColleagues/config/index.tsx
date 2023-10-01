@@ -11,7 +11,7 @@ type User = {
 }
 
 export const listItemPropsBuilder = (memberActivity: Activity & User): Partial<ListItemProps> => {
-
+  console.log(memberActivity)
   const defaultProps = {
     title: `Участник ${memberActivity.clientId.slice(0, 10)}`,
     renderDescription: () => <div className="flex items-center gap-1">
