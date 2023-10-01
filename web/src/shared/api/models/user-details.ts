@@ -56,5 +56,11 @@ export interface UserDetails {
      * @memberof UserDetails
      */
     'teams'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserDetails
+     */
+    'aim'?: string;
 }
 

@@ -10,7 +10,7 @@ interface ListCardProps<T>
   title?: React.ComponentProps<typeof CardHeader>["title"];
   route?: React.ComponentProps<typeof CardHeader>["route"];
 
-  items: T[];
+  items?: T[];
   renderItem?: (props: T) => React.ReactNode;
   renderItems?: (items: T[]) => React.ReactNode;
   renderTrigger?: () => React.ReactNode;
@@ -31,7 +31,7 @@ export function ListCard<T>({
         <CardHeader title={title} route={route} renderTrigger={renderTrigger} />
       ))}
       <ListItems
-        items={items}
+        items={items || []}
         renderItem={renderItem}
         renderItems={renderItems}
       />

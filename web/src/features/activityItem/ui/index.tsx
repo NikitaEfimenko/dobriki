@@ -3,8 +3,8 @@ import { ActivityKeys, IconActivity, IconPause, IconPlayer } from "@/icons";
 import { cn, nullable } from "@/shared/utils";
 
 interface ActivityItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   player?: boolean;
   activity?: ActivityKeys;
   on?: boolean;

@@ -1,7 +1,6 @@
 "use client";
 
 import { ListCard } from "@/entities/listCard";
-import { topColleagues } from "@/features/listItems/config";
 import { PageHeader } from "@/features/pageHeader";
 import { Card } from "@/shared/ui/card";
 import { GoalProgress } from "@/shared/ui/goal-progress";
@@ -18,6 +17,7 @@ import { Suspense, useState } from "react";
 import dynamic from "next/dynamic";
 import { Skeleton } from "@nextui-org/react";
 import { OnlineBadge } from "@/shared/ui/online-badge";
+import { useTeams } from "@/entities/feeds/api";
 
 const Routemap = dynamic(
   () => import("@/widgets/routemap").then((c) => ({ default: c.Routemap })),
@@ -32,6 +32,7 @@ const periods = [
 
 export default function StatisticsPage() {
   const [activePeriod, setActivePeriod] = useState(periods[1]);
+  const { data = [] } = useTeams();
 
   return (
     <div className="flex flex-col gap-4">
@@ -49,14 +50,23 @@ export default function StatisticsPage() {
 
       <ListCard
         title="Топ 10 коллег"
-        items={topColleagues}
-        renderItem={({ id, title, description, online }) => (
-          <ListItem key={id} title={title} description={description}>
-            {nullable(online, () => (
-              <OnlineBadge />
-            ))}
-          </ListItem>
-        )}
+        items={data}
+        renderItem={({
+          username,
+          email,
+          first_name,
+          last_name,
+          online = true,
+        }) => {
+          const title = first_name ? `${first_name} ${last_name}` : username;
+          return (
+            <ListItem key={email} title={title} description={username}>
+              {nullable(online, () => (
+                <OnlineBadge />
+              ))}
+            </ListItem>
+          );
+        }}
         renderTrigger={() => (
           <Dropdown className="bg-items rounded-xl">
             <DropdownTrigger>

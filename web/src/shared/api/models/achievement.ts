@@ -17,43 +17,38 @@
 /**
  * 
  * @export
- * @interface Activity
+ * @interface Achievement
  */
-export interface Activity {
+export interface Achievement {
     /**
      * 
      * @type {number}
-     * @memberof Activity
+     * @memberof Achievement
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof Activity
+     * @memberof Achievement
      */
     'name': string;
     /**
      * 
      * @type {string}
-     * @memberof Activity
+     * @memberof Achievement
      */
-    'type': ActivityTypeEnum;
+    'description': string;
+    /**
+     * Минимальное значение (например, минуты тренировки или километры пробега)
+     * @type {number}
+     * @memberof Achievement
+     */
+    'target_value': number;
     /**
      * 
-     * @type {string}
-     * @memberof Activity
+     * @type {Set<number>}
+     * @memberof Achievement
      */
-    'description'?: string | null;
+    'users'?: Set<number>;
 }
-
-export const ActivityTypeEnum = {
-    Step: 'STEP',
-    Ski: 'SKI',
-    Running: 'RUNNING',
-    Bycycle: 'BYCYCLE',
-    Found: 'FOUND'
-} as const;
-
-export type ActivityTypeEnum = typeof ActivityTypeEnum[keyof typeof ActivityTypeEnum];
-
 

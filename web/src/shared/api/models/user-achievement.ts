@@ -17,43 +17,32 @@
 /**
  * 
  * @export
- * @interface Activity
+ * @interface UserAchievement
  */
-export interface Activity {
+export interface UserAchievement {
     /**
      * 
      * @type {number}
-     * @memberof Activity
+     * @memberof UserAchievement
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof Activity
+     * @memberof UserAchievement
      */
-    'name': string;
+    'achieved_at'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Activity
+     * @type {number}
+     * @memberof UserAchievement
      */
-    'type': ActivityTypeEnum;
+    'user': number;
     /**
      * 
-     * @type {string}
-     * @memberof Activity
+     * @type {number}
+     * @memberof UserAchievement
      */
-    'description'?: string | null;
+    'achievement': number;
 }
-
-export const ActivityTypeEnum = {
-    Step: 'STEP',
-    Ski: 'SKI',
-    Running: 'RUNNING',
-    Bycycle: 'BYCYCLE',
-    Found: 'FOUND'
-} as const;
-
-export type ActivityTypeEnum = typeof ActivityTypeEnum[keyof typeof ActivityTypeEnum];
-
 

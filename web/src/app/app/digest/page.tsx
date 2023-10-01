@@ -25,7 +25,7 @@ export default function DigestPage() {
               className="w-20 h-20 rounded-2xl bg-red-400 p-[6px] flex items-end relative overflow-hidden"
               onClick={() => router.feed(feed.id!)}
             >
-              <div className="z-10">{feed.title}</div>
+              <div className="z-10 text-[10px] font-medium">{feed.title}</div>
               <Image
                 src={feed.image || ""}
                 alt={feed.title}

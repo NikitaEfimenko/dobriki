@@ -1,5 +1,6 @@
 "use client";
 
+import { useActivity } from "@/entities/feeds/api";
 import { ListCard } from "@/entities/listCard";
 import { ActivityItem } from "@/features/activityItem";
 import { PageHeader } from "@/features/pageHeader";
@@ -8,9 +9,11 @@ import {
   activityColors,
   useActivityPreview,
 } from "@/shared/providers/activity";
+import { Button } from "@/shared/ui/button";
 import { Card } from "@/shared/ui/card";
+import { Skeleton } from "@/shared/ui/skeleton";
 import { cn } from "@/shared/utils";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
 type Activity = {
   title: string;
@@ -20,43 +23,53 @@ type Activity = {
   activity?: ActivityKeys;
 };
 
-const activities: Activity[] = [
+const activitiesMock: Partial<Activity>[] = [
   {
-    title: "Бег",
-    description: "1 добрик = 1 км",
-    background: activityColors["run"],
+    background: activityColors["Бег"],
     player: true,
-    activity: "run",
+    activity: "Бег",
   },
   {
-    title: "Лыжи",
-    description: "2 добрика = 1 км",
-    background: activityColors["skis"],
+    background: activityColors["Лыжи"],
     player: true,
-    activity: "skis",
+    activity: "Лыжи",
   },
   {
-    title: "Велосипед",
-    description: "1 добрик = 2 км",
-    background: activityColors["bike"],
+    background: activityColors["Велосипед"],
     player: true,
-    activity: "bike",
+    activity: "Велосипед",
   },
   {
-    title: "Ходьба",
-    description: "1 добрик = 100 шагов",
-    background: activityColors["step"],
+    background: activityColors["Ходьба"],
     player: true,
-    activity: "step",
-  },
-  {
-    title: "Собери добрики",
-    description: "Посети 5 парков Москвы и получи 500 добриков",
-    background: "hsla(256, 100%, 67%, 1)",
+    activity: "Ходьба",
   },
 ];
 
+const activityMock = {
+  title: "Собери добрики",
+  description: "Посети 5 парков Москвы и получи 500 добриков",
+  background: "hsla(256, 100%, 67%, 1)",
+};
+
 export default function ActivityPage() {
+  const { data } = useActivity();
+
+  const activities = useMemo(() => {
+    return (
+      (data?.map(({ name, description }, index) => {
+        const mock = activitiesMock[index];
+        return {
+          title: name || mock.title,
+          description: description || mock.description,
+          background: mock.background,
+          player: mock.player,
+          activity: name,
+        };
+      }) as Activity[]) || Array(4).fill(null)
+    );
+  }, [data]);
+
   const {
     activity: selectedActivity,
     color,
@@ -92,24 +105,35 @@ export default function ActivityPage() {
           За разные активности вам начисляется разное количество добриков
         </div>
       </Card>
+      <Card
+        style={{ background: activityMock.background }}
+        className="flex flex-col gap-5 rounded-lg"
+      >
+        <div className="flex flex-col gap-[2px]">
+          <div className=" font-semibold">{activityMock.title}</div>
+          <div className="text-white/80">{activityMock.description}</div>
+        </div>
+        <Button className="w-fit bg-white">Подробнее</Button>
+      </Card>
       <ListCard
         items={activities}
         renderItems={(items) => (
           <div className="grid grid-cols-2 gap-4">
-            {items.map(
-              ({ title, description, background, player, activity }, index) => {
-                const on = selectedActivity === (activity || null);
-                return (
-                  <Card
-                    shadow={false}
-                    key={index}
-                    className={cn(
-                      "relative",
-                      index === items.length - 1 ? "col-span-2" : "",
-                      !on && selectedActivity ? "opacity-40" : ""
-                    )}
-                    style={{ background }}
-                  >
+            {items.map((item, index) => {
+              const { title, description, background, player, activity } =
+                item || {};
+              const on = selectedActivity === (activity || null);
+              return (
+                <Card
+                  shadow={false}
+                  key={index}
+                  className={cn(
+                    "relative",
+                    !on && selectedActivity ? "opacity-40" : ""
+                  )}
+                  style={{ background }}
+                >
+                  {title ? (
                     <ActivityItem
                       title={title}
                       description={description}
@@ -118,10 +142,12 @@ export default function ActivityPage() {
                       activity={activity}
                       onClick={onActivityItemSelect(activity)}
                     />
-                  </Card>
-                );
-              }
-            )}
+                  ) : (
+                    <Skeleton className="h-[142px] w-[163.5px] rounded-2xl -m-4" />
+                  )}
+                </Card>
+              );
+            })}
           </div>
         )}
       />

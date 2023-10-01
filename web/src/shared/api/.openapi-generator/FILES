@@ -2,8 +2,12 @@
 .npmignore
 .openapi-generator-ignore
 api.ts
+api/achievement-api.ts
+api/achievement-user-api.ts
 api/activity-api.ts
 api/auth-api.ts
+api/charity-api.ts
+api/charity-subscription-api.ts
 api/competitions-api.ts
 api/feed-api.ts
 base.ts
@@ -11,6 +15,7 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+models/achievement.ts
 models/activity.ts
 models/article-author.ts
 models/article-category-preview.ts
@@ -18,6 +23,8 @@ models/article-category.ts
 models/article-preview.ts
 models/article-tag.ts
 models/article.ts
+models/charity-subscription.ts
+models/charity.ts
 models/cookie-token-refresh.ts
 models/feed-articles-list200-response.ts
 models/index.ts
@@ -26,5 +33,6 @@ models/member.ts
 models/personal-competition.ts
 models/register.ts
 models/token-verify.ts
+models/user-achievement.ts
 models/user-details.ts
 models/user-team.ts

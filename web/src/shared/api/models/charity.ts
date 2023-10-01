@@ -17,43 +17,56 @@
 /**
  * 
  * @export
- * @interface Activity
+ * @interface Charity
  */
-export interface Activity {
+export interface Charity {
     /**
      * 
      * @type {number}
-     * @memberof Activity
+     * @memberof Charity
      */
     'id'?: number;
     /**
      * 
      * @type {string}
-     * @memberof Activity
+     * @memberof Charity
+     */
+    'organization_name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Charity
      */
     'name': string;
     /**
      * 
-     * @type {string}
-     * @memberof Activity
+     * @type {boolean}
+     * @memberof Charity
      */
-    'type': ActivityTypeEnum;
+    'is_active'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Charity
+     */
+    'approved'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof Activity
+     * @memberof Charity
      */
-    'description'?: string | null;
+    'description': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Charity
+     */
+    'contact_email'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Charity
+     */
+    'sum': string;
 }
-
-export const ActivityTypeEnum = {
-    Step: 'STEP',
-    Ski: 'SKI',
-    Running: 'RUNNING',
-    Bycycle: 'BYCYCLE',
-    Found: 'FOUND'
-} as const;
-
-export type ActivityTypeEnum = typeof ActivityTypeEnum[keyof typeof ActivityTypeEnum];
-
 
