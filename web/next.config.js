@@ -19,7 +19,7 @@ const nextConfig = {
       },
       {
         source: '/backend/:path*',
-        destination: `${process.env.NEXT_BACKEND_URL}/:path`, 
+        destination: `${process.env.NEXT_BACKEND_URL}/:path*/`, 
       },
       {
         source: '/swagger/:slug*',
