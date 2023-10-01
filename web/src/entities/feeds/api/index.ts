@@ -14,3 +14,17 @@ export const useFeeds = () => {
     ...rest,
   };
 };
+
+export const useFeed = (id: string) => {
+  const { data, ...rest } = useQuery({
+    queryKey: ["queryFeed"],
+    queryFn: async () => {
+      return feedApiInstance.feedArticlesRead({ id: +id });
+    },
+  });
+
+  return {
+    data: data?.data,
+    ...rest,
+  };
+};
