@@ -11,14 +11,15 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   trailingSlash: true,
   async rewrites() {
+
     return [
       {
         source: '/admin/:slug*',
-        destination: `${process.env.NEXT_BACKEND_URL}admin/:slug*`, 
+        destination: `${process.env.NEXT_BACKEND_URL}/admin/:slug*`, 
       },
       {
         source: '/backend/:path*',
-        destination: `${process.env.NEXT_BACKEND_URL}/:path*`, 
+        destination: `${process.env.NEXT_BACKEND_URL}/:path`, 
       },
       {
         source: '/swagger/:slug*',
