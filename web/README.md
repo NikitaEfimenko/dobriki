@@ -1,6 +1,7 @@
 # Web resources
 
 - [Website Link](https://dobriki.vercel.app/form/)
+- [Admin panel](http://94.241.175.55/) (login: `admin`, password: `admin`)
 
 
 ## Instruction
