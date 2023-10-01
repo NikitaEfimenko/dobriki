@@ -19,7 +19,11 @@ import type { Configuration } from './configuration';
 import type { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
 
+<<<<<<< HEAD
 export const BASE_PATH = "http://localhost:8000/api".replace(/\/+$/, "");
+=======
+export const BASE_PATH = "http://94.241.175.55/api".replace(/\/+$/, "");
+>>>>>>> 6a008b2c68f9a7af680017f9bb094745a32f159b
 
 /**
  *

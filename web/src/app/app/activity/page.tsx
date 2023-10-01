@@ -10,6 +10,7 @@ import {
 } from "@/shared/providers/activity";
 import { Card } from "@/shared/ui/card";
 import { cn } from "@/shared/utils";
+import { useCallback } from "react";
 
 type Activity = {
   title: string;
@@ -62,6 +63,27 @@ export default function ActivityPage() {
     setPreview,
   } = useActivityPreview();
 
+  const onActivityItemSelect = useCallback(
+    (activity?: ActivityKeys) => {
+      return () => {
+        if (selectedActivity === activity) {
+          setPreview?.(undefined);
+          return;
+        }
+
+        if (selectedActivity) {
+          return;
+        }
+
+        if (!selectedActivity) {
+          setPreview?.(activity);
+          return;
+        }
+      };
+    },
+    [selectedActivity, setPreview]
+  );
+
   return (
     <div className="flex flex-col gap-4">
       <Card className="flex flex-col gap-6 rounded-t-none">
@@ -94,7 +116,7 @@ export default function ActivityPage() {
                       player={player}
                       on={on}
                       activity={activity}
-                      onClick={() => setPreview?.(activity)}
+                      onClick={onActivityItemSelect(activity)}
                     />
                   </Card>
                 );

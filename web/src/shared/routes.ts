@@ -1,5 +1,6 @@
 const app = "/app";
 const form = "/form";
+const feed = "/feed";
 
 export const routes = {
   app: () => `${app}/`,
@@ -11,6 +12,7 @@ export const routes = {
 
   digest: () => `${app}/digest/`,
   organizations: () => `${app}/digest/organizations/`,
+  feed: (id: number) => `${app}/digest/${feed}/${id}`,
 
   profile: () => `${app}/profile/`,
 
